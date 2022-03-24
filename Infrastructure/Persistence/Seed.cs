@@ -103,7 +103,7 @@ public class Seed
                             {
                                 new IssueInReview
                                 {
-                                    TestIssueId = new Guid(),
+                                    IssueInReviewId = new Guid(),
                                     Title = "Design dropdown menu for shopping cart",
                                     Urgency = "Medium",
                                     Date = DateTime.UtcNow,
@@ -113,7 +113,7 @@ public class Seed
                                 },
                                 new IssueInReview
                                 {
-                                    TestIssueId = new Guid(),
+                                    IssueInReviewId = new Guid(),
                                     Title = "Display Items in 4 Grid columns",
                                     Urgency = "High",
                                     
@@ -124,7 +124,7 @@ public class Seed
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 },   new IssueInReview
                                 {
-                                    TestIssueId = new Guid(),
+                                    IssueInReviewId = new Guid(),
                                     Title = "Create login Controller",
                                     Urgency = "High",
                                     
@@ -172,11 +172,6 @@ public class Seed
                             },
                         },
 
-                        new Project
-                        {
-                            ProjectId = new Guid(),
-                            Title = "Online Store"
-                        },
                     }
                 },
                 new AppUser

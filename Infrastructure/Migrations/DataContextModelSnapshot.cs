@@ -145,7 +145,38 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("inProgressIssues");
+                    b.ToTable("InProgressIssues");
+                });
+
+            modelBuilder.Entity("Domain.Entities.IssueInReview", b =>
+                {
+                    b.Property<Guid>("IssueInReviewId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("ProjectId")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Urgency")
+                        .HasColumnType("text");
+
+                    b.HasKey("IssueInReviewId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("IssuesInReview");
                 });
 
             modelBuilder.Entity("Domain.Entities.OpenIssue", b =>
@@ -196,37 +227,6 @@ namespace Infrastructure.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TestIssue", b =>
-                {
-                    b.Property<Guid>("TestIssueId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Urgency")
-                        .HasColumnType("text");
-
-                    b.HasKey("TestIssueId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("TestIssues");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -383,6 +383,17 @@ namespace Infrastructure.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("Domain.Entities.IssueInReview", b =>
+                {
+                    b.HasOne("Domain.Entities.Project", "Project")
+                        .WithMany("TestIssues")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Project");
+                });
+
             modelBuilder.Entity("Domain.Entities.OpenIssue", b =>
                 {
                     b.HasOne("Domain.Entities.Project", "Project")
@@ -401,17 +412,6 @@ namespace Infrastructure.Migrations
                         .HasForeignKey("AppUserId");
 
                     b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("Domain.Entities.TestIssue", b =>
-                {
-                    b.HasOne("Domain.Entities.Project", "Project")
-                        .WithMany("TestIssues")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

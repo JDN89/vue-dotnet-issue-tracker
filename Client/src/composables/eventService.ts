@@ -42,7 +42,7 @@ export default {
     })
   },
   async getAllReviewIssues(token: string, projectId: string) {
-    return await apiClient.get(`testissue/${projectId}`, {
+    return await apiClient.get(`issuesInReview/${projectId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

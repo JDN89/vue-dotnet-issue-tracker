@@ -23,7 +23,7 @@ public class DeleteIssuesInProgress
 
         protected override async Task Handle(Command command, CancellationToken cancellationToken)
         {
-            var deleteIssuesInProgress = await _context.inProgressIssues.Where(o => o.ProjectId == command.ProjectId)
+            var deleteIssuesInProgress = await _context.InProgressIssues.Where(o => o.ProjectId == command.ProjectId)
                 .ToListAsync(cancellationToken);
             if (deleteIssuesInProgress.Count<=0) return ;
             

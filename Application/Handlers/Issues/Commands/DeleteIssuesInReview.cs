@@ -23,7 +23,7 @@ public class DeleteIssuesInReview
  
          protected override async Task Handle(Command command, CancellationToken cancellationToken)
          {
-             var deleteIssuesInReview= await _context.TestIssues.Where(o => o.ProjectId == command.ProjectId)
+             var deleteIssuesInReview= await _context.IssuesInReview.Where(o => o.ProjectId == command.ProjectId)
                  .ToListAsync(cancellationToken);
              if (deleteIssuesInReview.Count<=0) return ;
              

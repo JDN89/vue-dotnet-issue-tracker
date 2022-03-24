@@ -30,7 +30,7 @@ public class AddIssuesInProgress
 
             foreach (var issue in issues)
             {
-                await _context.inProgressIssues.AddAsync(issue, cancellationToken);
+                await _context.InProgressIssues.AddAsync(issue, cancellationToken);
             }
 
             var success = await _context.SaveChangesAsync(cancellationToken) > 0;

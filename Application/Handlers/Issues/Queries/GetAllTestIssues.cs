@@ -27,7 +27,7 @@ public class GetAllTestIssues
 
         public async Task<List<GetIssueInReviewDto>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var testIssues = _context.TestIssues.Where(x => x.ProjectId == request.ProjId);
+            var testIssues = _context.IssuesInReview.Where(x => x.ProjectId == request.ProjId);
             return await testIssues.Select(o => _mapper.Map<GetIssueInReviewDto>(o))
                 .ToListAsync(cancellationToken);
         }

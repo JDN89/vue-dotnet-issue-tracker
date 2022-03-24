@@ -30,7 +30,7 @@ public class AddIssuesInReview
      
                  foreach (var issue in issues)
                  {
-                     await _context.TestIssues.AddAsync(issue, cancellationToken);
+                     await _context.IssuesInReview.AddAsync(issue, cancellationToken);
                  }
      
                  var success = await _context.SaveChangesAsync(cancellationToken) > 0;
