@@ -31,15 +31,20 @@
 - Make sure you have PostGress installed onto your pc
 ```
 - cd into Client folder 
-    - pnpm install 
-    - npm run dev
+    - $ pnpm install 
+    - $ npm run dev
 ```
 
 ```
 - cd into WebUI folder
-    - dotnet run
+    - $ dotnet run
+- cd into root folder (set up code first migration)
+    - $ dotnet ef migrations add initialCreate -p Infrastructure -s WebUI
 ```
-### after installation
+ > it's possible that you have to switch the order of dotnet run and dotnet ef migrations ( I don't remember the exact order).
+<br />
+
+## After installation
 - when you run dotnet run, seed (dummmy) data gets stored into your db, so you have something to work with
     - check Infrastructure/Persistence/Seed.cs
 <br/>
