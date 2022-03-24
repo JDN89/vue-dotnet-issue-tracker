@@ -23,7 +23,7 @@ const logout = () => {
         class="icon-btn mx-2"
         i-carbon-logo-github
         rel="noreferrer"
-        href="https://github.com/JDN89/issue-tracker"
+        href="https://github.com/JDN89/vue-dotnet-issue-tracker"
         target="_blank"
         title="GitHub"
       />
