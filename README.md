@@ -79,5 +79,5 @@ Dummy user:
 
 
 <br/> 
-Feel free to contact me at jan.de.niels@gmail.com for comments, improvements or for sharing your cloned repo with me or to maybe share a job position with me. I'm currently looking :)
+Feel free to contact me at jan.de.niels@gmail.com for comments, improvements or for sharing your cloned repo with me 
     
