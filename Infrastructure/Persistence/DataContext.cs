@@ -13,7 +13,7 @@ public class DataContext : IdentityDbContext<AppUser>
     public DbSet<Project> Projects { get; set; }
     public DbSet<OpenIssue> OpenIssues { get; set; }
     public DbSet<InProgressIssue> inProgressIssues { get; set; }
-    public DbSet<TestIssue> TestIssues { get; set; }
+    public DbSet<IssueInReview> TestIssues { get; set; }
     public DbSet<ClosedIssue> ClosedIssues { get; set; }
 
 

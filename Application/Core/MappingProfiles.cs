@@ -12,7 +12,7 @@ public class MappingProfiles : Profile
         CreateMap<Project, GetProjectDto>();
         CreateMap<OpenIssue, GetOpenIssueDto>();
         CreateMap<GetOpenIssueDto, OpenIssue>();
-        CreateMap<TestIssue, GetTestIssueDto>();
+        CreateMap<IssueInReview, GetIssueInReviewDto>();
         CreateMap<InProgressIssue, GetIssueInProgressDto>();
         CreateMap<GetIssueInProgressDto, InProgressIssue>();
         CreateMap<ClosedIssue, GetClosedIssueDto>();

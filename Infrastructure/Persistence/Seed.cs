@@ -99,9 +99,9 @@ public class Seed
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 }
                             }, 
-                            TestIssues = new List<TestIssue>
+                            TestIssues = new List<IssueInReview>
                             {
-                                new TestIssue
+                                new IssueInReview
                                 {
                                     TestIssueId = new Guid(),
                                     Title = "Design dropdown menu for shopping cart",
@@ -111,7 +111,7 @@ public class Seed
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 },
-                                new TestIssue
+                                new IssueInReview
                                 {
                                     TestIssueId = new Guid(),
                                     Title = "Display Items in 4 Grid columns",
@@ -122,7 +122,7 @@ public class Seed
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
-                                },   new TestIssue
+                                },   new IssueInReview
                                 {
                                     TestIssueId = new Guid(),
                                     Title = "Create login Controller",

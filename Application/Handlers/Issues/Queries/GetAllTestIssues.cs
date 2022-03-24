@@ -9,12 +9,12 @@ namespace Application.Handlers.Issues.Queries;
 
 public class GetAllTestIssues
 {
-       public class Query : IRequest<List<GetTestIssueDto>>
+       public class Query : IRequest<List<GetIssueInReviewDto>>
         {
             public Guid ProjId { get; set; }
         }
        
-    public class Handler : IRequestHandler<Query, List<GetTestIssueDto>>
+    public class Handler : IRequestHandler<Query, List<GetIssueInReviewDto>>
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
@@ -25,10 +25,10 @@ public class GetAllTestIssues
             _mapper = mapper;
         }
 
-        public async Task<List<GetTestIssueDto>> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<List<GetIssueInReviewDto>> Handle(Query request, CancellationToken cancellationToken)
         {
             var testIssues = _context.TestIssues.Where(x => x.ProjectId == request.ProjId);
-            return await testIssues.Select(o => _mapper.Map<GetTestIssueDto>(o))
+            return await testIssues.Select(o => _mapper.Map<GetIssueInReviewDto>(o))
                 .ToListAsync(cancellationToken);
         }
     }

@@ -1,6 +1,6 @@
 namespace Application.DTOs;
 
-public class GetTestIssueDto
+public class GetIssueInReviewDto
 {
     public Guid TestIssueId { get; set; }
     public string Title { get; set; }
