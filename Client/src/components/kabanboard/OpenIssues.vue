@@ -40,9 +40,9 @@ onBeforeUpdate(async() => {
     ghost-class="ghost"
     animation=" 400"
   >
-    <template #item="{ element }">
+    <template #item="{ element } ">
       <div class="m-4 ">
-        <IssueCard :title="element.title" :urgency="element.urgency" :date="element.date" :type="element.type" />
+        <IssueCard :title="element.title" :urgency="element.urgency" :date="element.localDate" :type="element.type" />
       </div>
     </template>
   </draggable>

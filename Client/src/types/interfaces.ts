@@ -19,11 +19,11 @@ export interface Issue {
   id: string
   title: string
   description: string
-  date: string
+  localDate: string
   type: string
   urgency: string
   projectId: string
-
+  date: string
 }
 export interface Project {
   projectId: string
