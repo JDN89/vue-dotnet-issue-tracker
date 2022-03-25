@@ -12,7 +12,7 @@
    - the Fronted is created and can communicate with the backend
    - state and position of the issues get saved upon drag and upon logging in
 ##  To Do
-- fix display of date time
+- fix display of date time - DONE
     > 
 - add new issue
     - automatically fill in current date upon creation of issue
