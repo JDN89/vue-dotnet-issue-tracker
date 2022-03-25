@@ -1,4 +1,5 @@
 using Application.DTOs;
+using Application.DTOs.Issues;
 using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Persistence;

@@ -34,7 +34,6 @@ public class Seed
                                     OpenIssueId = new Guid(),
                                     Title = "Add right margin to Checkout button",
                                     Urgency = "High",
-                                    Date = DateTime.UtcNow,
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -45,7 +44,6 @@ public class Seed
                                     Title = "Add discount code to the checkout page",
                                     Urgency = "High",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Design",
                                     Description =
@@ -59,7 +57,6 @@ public class Seed
                                     InProgressIssueId = new Guid(),
                                     Title = "Create A Cart Button",
                                     Urgency = "Medium",
-                                    Date = DateTime.UtcNow,
                                     Type = "Feature Request",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -70,7 +67,6 @@ public class Seed
                                     Title = "Provide Documentation on Functionality",
                                     Urgency = "Low",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Feature Request",
                                     Description =
@@ -81,7 +77,6 @@ public class Seed
                                     Title = "Desing Footer",
                                     Urgency = "Low",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Desing",
                                     Description =
@@ -92,7 +87,6 @@ public class Seed
                                     Title = "Provide Documentation on State",
                                     Urgency = "Medium",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Feature Request",
                                     Description =
@@ -106,7 +100,6 @@ public class Seed
                                     IssueInReviewId = new Guid(),
                                     Title = "Design dropdown menu for shopping cart",
                                     Urgency = "Medium",
-                                    Date = DateTime.UtcNow,
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -117,7 +110,6 @@ public class Seed
                                     Title = "Display Items in 4 Grid columns",
                                     Urgency = "High",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Design",
                                     Description =
@@ -128,7 +120,6 @@ public class Seed
                                     Title = "Create login Controller",
                                     Urgency = "High",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Backend",
                                     Description =
@@ -141,7 +132,6 @@ public class Seed
                                     ClosedIssueId = new Guid(),
                                     Title = "Fix DB connection String",
                                     Urgency = "High",
-                                    Date = DateTime.UtcNow,
                                     Type = "Backend",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -152,7 +142,6 @@ public class Seed
                                     Title = "Review login user interface flow",
                                     Urgency = "High",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "QA",
                                     Description =
@@ -163,7 +152,6 @@ public class Seed
                                     Title = "Add Total Sum to checkout Page",
                                     Urgency = "High",
                                     
-                                    Date = DateTime.UtcNow,
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Feature Request",
                                     Description =

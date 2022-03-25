@@ -1,4 +1,5 @@
 using Application.DTOs;
+using Application.DTOs.Issues;
 using Application.Handlers.Issues.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

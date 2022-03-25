@@ -1,5 +1,6 @@
 using System.Reflection.Metadata;
 using Application.DTOs;
+using Application.DTOs.Issues;
 using Application.Handlers.Issues.Commands;
 using Application.Handlers.Issues.Queries;
 using Microsoft.AspNetCore.Authorization;
