@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const props = defineProps<{ title: string; urgency: string; date: string; type: string }>()
+console.log(props)
 
-const myUrgencyStyles = new Map<string, string>([['medium', 'border-1'], ['low', 'border-dotted dark:border-dotted'], ['high', 'border-2 dark:border-2 ']])
+const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
 
 const urgencyStyle = computed(() => {
   return myUrgencyStyles.get(props.urgency)!

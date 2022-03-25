@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{ urgency: string } >()
 
-const myUrgencyColorMap = new Map<string, string>([['low', 'font-normal text-xs'], ['medium', 'font-semibold text-xs'], ['high', 'font-bold text-l']])
+const myUrgencyColorMap = new Map<string, string>([['Low', 'font-normal text-xs'], ['Medium', 'font-semibold text-xs'], ['High', 'font-bold text-l']])
 
 const urgencyColor = computed(() => {
   return myUrgencyColorMap.get(props.urgency)!
