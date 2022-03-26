@@ -26,7 +26,15 @@ export default {
       },
     })
   },
+  async addNewProject(token: string, title: string) {
+    return await apiClient.post(`project/${title}`, null, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
 
+  // =================ISSUE REQUEST ===================
   async getAllOpenIssues(token: string, projectId: string) {
     return await apiClient.get(`openissue/${projectId}`, {
       headers: {
