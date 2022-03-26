@@ -15,6 +15,7 @@ const SendProjectToStore = () => {
   if (projectTitle.value !== null) {
     store.addProject(projectTitle.value)
     projectTitle.value = null
+    isHidden.value = true
   }
   else { alert('please add a project title') }
 }
