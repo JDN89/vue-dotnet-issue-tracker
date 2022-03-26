@@ -74,6 +74,12 @@ Dummy user:
 <br/>
 > Pasword = "Pa$$w0rd"
 
+## Images
+
+![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMe_images/issue-tracker-ksnip.png)
+![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMe_images/issue-tracker-dark-ksnip.png)
+
+
 # After word
 - This project is a continuation of my former issue-tracker repo https://github.com/JDN89/issue-tracker-discontinued .
 <br/> Github was not displaying my commits in my activity graph (that's why there is a gap in 02/2022 and 03/2022). 
