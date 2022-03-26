@@ -249,10 +249,28 @@ export const useProjectStore = defineStore({
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
-    async updateAllIssuesToBeTested(issues: Issue[]) {
-      console.log('review')
-
-      console.log(issues)
+    async updateAllIssuesInReview(issues: Issue[]) {
+      const userStore = useUserStore()
+      if (userStore.getToken) {
+        await eventService.updateAllIssuesInReview(userStore.getToken, issues, issues[0].projectId)
+          .then((response) => {
+            if (response.status === 200) console.log('approved boy')
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
     },
     // =========================================
     // ===========   UPDATE CLOSED ISSUES  ===============

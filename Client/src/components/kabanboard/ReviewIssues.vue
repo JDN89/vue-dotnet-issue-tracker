@@ -6,7 +6,7 @@ import { useProjectStore } from '~/stores/projects'
 const store = useProjectStore()
 onBeforeUpdate(async() => {
   watch(store.Review!, async(value) => {
-    await store.updateAllIssuesToBeTested(value)
+    await store.updateAllIssuesInReview(value)
   })
 })
 </script>
