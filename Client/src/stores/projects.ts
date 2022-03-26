@@ -210,7 +210,6 @@ export const useProjectStore = defineStore({
             }
           })
       }
-      return console.log('fire')
     },
 
     // =========================================
@@ -241,7 +240,6 @@ export const useProjectStore = defineStore({
             }
           })
       }
-      return console.log('issues')
     },
 
     // =========================================
@@ -278,9 +276,27 @@ export const useProjectStore = defineStore({
     // =========================================
 
     async updateAllClosedIssues(issues: Issue[]) {
-      console.log('closed')
-
-      console.log(issues)
+      const userStore = useUserStore()
+      if (userStore.getToken) {
+        await eventService.updateAllClosedIssues(userStore.getToken, issues, issues[0].projectId)
+          .then((response) => {
+            if (response.status === 200) console.log('approved boy')
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
     },
 
   },
