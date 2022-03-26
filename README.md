@@ -24,7 +24,9 @@
     - upon logging in Project [0] gets loaded - DONE
 - remove token automatically when it expires
 - display errors in a nice format
-    - display Axios errors
+    - display Axios errors (if necessary)
+ - EF core inserts issues in random order, making drag and drop feature of kabanboard less usefull. 
+   - find solution to save issues via EF core in the order they're send in to the backend.
 
 ## Ideas
  - Add possibility to share your project / issue with another user.
