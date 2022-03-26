@@ -9,11 +9,11 @@ import { useUserStore } from '~/stores/users'
 import eventService from '~/composables/eventService'
 
 interface State {
-  OpenIssues: Issue [] | null
-  InProgress: Issue [] | null
-  Review: Issue [] | null
+  OpenIssues: Issue[] | null
+  InProgress: Issue[] | null
+  Review: Issue[] | null
   Closed: Issue[] | null
-  Projects: Project []| null
+  Projects: Project[] | null
 
 }
 
@@ -188,7 +188,28 @@ export const useProjectStore = defineStore({
     // =========================================
 
     async updateAllOpenIssues(openIssues: Issue[]) {
-      console.log(openIssues)
+      const userStore = useUserStore()
+      if (userStore.getToken) {
+        await eventService.updateAllOpenIssues(userStore.getToken, openIssues, openIssues[0].projectId)
+          .then((response) => {
+            console.log(response.status)
+            if (response.status === 200) console.log('approved boy')
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
       return console.log('fire')
     },
 
@@ -198,9 +219,29 @@ export const useProjectStore = defineStore({
     // =========================================
 
     async updateAllIssuesInProgress(issues: Issue[]) {
-      console.log('in progress')
-
-      console.log(issues)
+      const userStore = useUserStore()
+      if (userStore.getToken) {
+        await eventService.updateIssuesInProgress(userStore.getToken, issues, issues[0].projectId)
+          .then((response) => {
+            console.log(response.status)
+            if (response.status === 200) console.log('approved boy')
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
+      return console.log('issues')
     },
 
     // =========================================

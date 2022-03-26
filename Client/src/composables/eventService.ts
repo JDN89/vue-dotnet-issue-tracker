@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { LoginUserInterface, RegisterUserInterface } from '../types/interfaces'
+import type { Issue, LoginUserInterface, RegisterUserInterface } from '../types/interfaces'
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
@@ -34,8 +34,22 @@ export default {
       },
     })
   },
+  async updateAllOpenIssues(token: string, openIssues: Issue[], projectId: string) {
+    return await apiClient.put(`openissue/${projectId}`, openIssues, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
   async getAllIssuesInProgress(token: string, projectId: string) {
     return await apiClient.get(`issuesInProgress/${projectId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
+  async updateIssuesInProgress(token: string, inProgressIssues: Issue[], projectId: string) {
+    return await apiClient.put(`issuesInProgress/${projectId}`, inProgressIssues, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
