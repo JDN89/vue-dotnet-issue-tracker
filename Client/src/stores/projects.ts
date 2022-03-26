@@ -65,6 +65,14 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
+    // ===========   ADD Projects  ===============
+    // =========================================
+
+    async addProject(title: string) {
+      console.log(title)
+    },
+
+    // =========================================
     // ===========   FETCH OPENISSUES  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
