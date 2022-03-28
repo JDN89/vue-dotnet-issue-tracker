@@ -1,6 +1,5 @@
 using Application.DTOs;
 using Application.DTOs.Issues;
-using Application.DTOs.User;
 using AutoMapper;
 using Domain.Entities;
 
@@ -11,6 +10,7 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         CreateMap<Project, GetProjectDto>();
+        CreateMap<GetProjectDto, Project>();
         CreateMap<OpenIssue, GetOpenIssueDto>();
         CreateMap<GetOpenIssueDto, OpenIssue>();
         CreateMap<IssueInReview, GetIssueInReviewDto>();
