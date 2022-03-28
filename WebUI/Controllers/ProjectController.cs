@@ -1,6 +1,7 @@
 using Application.DTOs;
 using Application.Handlers.Projects.Commands;
 using Application.Handlers.Projects.Queries;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +20,12 @@ public class ProjectController : BaseController
 
     [HttpPost]
     [Authorize]
-    public async Task<IResult> AddProject([FromBody] GetProjectDto newProject)
+    public async Task<IActionResult> AddProject([FromBody] GetProjectDto newProject)
     {
-        await Mediator.Send(new AddNewProject.Command {NewProject = newProject});
-        return Results.Ok();
+        return HandleResult(
+
+            await Mediator.Send(new AddNewProject.Command {NewProject = newProject})
+        );
+
     }
 }

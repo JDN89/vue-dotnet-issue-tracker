@@ -3,6 +3,7 @@ using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Handlers.Issues.Commands;
 
@@ -34,9 +35,9 @@ public class AddClosedIssues
                  }
      
                  var success = await _context.SaveChangesAsync(cancellationToken) > 0;
-     
+
                  if (success) return;
-     
+                     
                  throw new Exception("Problem saving changes");
              }
          }
