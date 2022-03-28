@@ -11,12 +11,16 @@ const showAddProject = () => {
   isHidden.value = false
 }
 const projectTitle = ref<string|null>(null)
-const SendProjectToStore = () => {
+const SendProjectToStore = async() => {
   if (projectTitle.value !== null) {
-    store.addProject(projectTitle.value)
-    projectTitle.value = null
-    isHidden.value = true
+    try { await store.addProject(projectTitle.value) }
+    catch (error) { console.error(error) }
+    finally {
+      projectTitle.value = null
+      isHidden.value = true
+    }
   }
+
   else { alert('please add a project title') }
 }
 
