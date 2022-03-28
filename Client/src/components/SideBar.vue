@@ -27,6 +27,9 @@ const SendProjectToStore = () => {
     <h1 text-3xl py-3>
       My Projects
     </h1>
+    <div i-bx-dots-vertical-rounded i-carbon-add-alt>
+      <EditButton />
+    </div>
     <ul>
       <li
         v-for="project in store.getProjects"
@@ -35,6 +38,7 @@ const SendProjectToStore = () => {
         @click="fetchProject(project.projectId)"
       >
         {{ project.title }}
+        <EditButton />
       </li>
     </ul>
     <button
