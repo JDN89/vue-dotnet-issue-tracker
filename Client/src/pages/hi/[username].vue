@@ -8,13 +8,16 @@ const store = useProjectStore()
 
 onBeforeMount(async() => {
   // onbefore mount load the first project in the array!! fetch project[0].id
-  await store.fetchProjects()
-  if (store.getProjects) {
-    const firstProject = store.getProjects[0].projectId
-    await store.fetchOpenIssues(firstProject)
-    await store.fetchAllReviewIssues(firstProject)
-    await store.fetchIssuesInProgress(firstProject)
-    await store.fetchClosedIssues(firstProject)
+  await store.fetchProjects().then(() => {
+    if (store.getProjects)
+      store.LoadedProjectId = store.getProjects[0].projectId
+  })
+
+  if (store.getLoadedProjectId) {
+    await store.fetchOpenIssues(store.getLoadedProjectId)
+    await store.fetchAllReviewIssues(store.getLoadedProjectId)
+    await store.fetchIssuesInProgress(store.getLoadedProjectId)
+    await store.fetchClosedIssues(store.getLoadedProjectId)
   }
 })
 </script>

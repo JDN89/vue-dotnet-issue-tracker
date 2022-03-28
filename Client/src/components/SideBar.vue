@@ -3,9 +3,6 @@ import { useProjectStore } from '~/stores/projects'
 
 const store = useProjectStore()
 
-const fetchProject = async(id: string) => {
-  return null
-}
 const isHidden = ref(true)
 const showAddProject = () => {
   isHidden.value = false
@@ -39,7 +36,7 @@ const SendProjectToStore = async() => {
         v-for="project in store.getProjects"
         :key="project.projectId"
         class="square-border my-2"
-        @click="fetchProject(project.projectId)"
+        @click="store.fetchProjectRelatedIssues(project.projectId)"
       >
         {{ project.title }}
         <EditButton />

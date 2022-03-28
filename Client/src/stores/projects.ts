@@ -14,6 +14,7 @@ interface State {
   Review: Issue[] | null
   Closed: Issue[] | null
   Projects: Project[] | null
+  LoadedProjectId: string| null
 
 }
 
@@ -21,6 +22,7 @@ export const useProjectStore = defineStore({
   id: 'Projects',
   state: (): State => ({
     Projects: null,
+    LoadedProjectId: null,
     OpenIssues: null,
 
     InProgress: null,
@@ -65,17 +67,33 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
+    // ===========   FETCH Project Issues  ===============
+    // =========================================
+
+    async fetchProjectRelatedIssues(projectId: string) {
+      if (projectId === this.LoadedProjectId) { return null }
+      else {
+        this.LoadedProjectId = projectId
+        await this.fetchOpenIssues(projectId)
+        await this.fetchAllReviewIssues(projectId)
+        await this.fetchIssuesInProgress(projectId)
+        await this.fetchClosedIssues(projectId)
+      }
+      console.log(projectId)
+    },
+
+    // =========================================
     // ===========   ADD Projects  ===============
     // =========================================
 
     async addProject(title: string) {
-      console.log(title)
       const userStore = useUserStore()
 
       if (userStore.getToken) {
         await eventService.addNewProject(userStore.getToken, title)
           .then((response) => {
-            this.Projects = response.data
+            if (response.status === 200)
+              return true
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -341,6 +359,7 @@ export const useProjectStore = defineStore({
     getReview: (state: State) => state.Review,
     getClosed: (state: State) => state.Closed,
     getProjects: (state: State) => state.Projects,
+    getLoadedProjectId: (state: State) => state.LoadedProjectId,
 
   },
 })
