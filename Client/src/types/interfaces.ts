@@ -31,3 +31,6 @@ export interface Project {
   title: string
 
 }
+export interface AddProject {
+  title: string|null
+}
