@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { Issue, LoginUserInterface, RegisterUserInterface } from '../types/interfaces'
+import type { AddProject, Issue, LoginUserInterface, RegisterUserInterface } from '../types/interfaces'
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
@@ -26,8 +26,8 @@ export default {
       },
     })
   },
-  async addNewProject(token: string, title: string) {
-    return await apiClient.post(`project/${title}`, null, {
+  async addNewProject(token: string, newProject: AddProject) {
+    return await apiClient.post('project/', newProject, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

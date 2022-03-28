@@ -2,7 +2,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
 // import axios from 'axios'
-import type { Issue, Project } from '~/types/interfaces'
+import type { AddProject, Issue, Project } from '~/types/interfaces'
 // import eventService from '~/composables/eventService'
 
 import { useUserStore } from '~/stores/users'
@@ -83,14 +83,14 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
-    // ===========   ADD Projects  ===============
+    // ===========   ADD Project  ===============
     // =========================================
 
-    async addProject(title: string) {
+    async addProject(newProject: AddProject) {
       const userStore = useUserStore()
 
       if (userStore.getToken) {
-        await eventService.addNewProject(userStore.getToken, title)
+        await eventService.addNewProject(userStore.getToken, newProject)
           .then((response) => {
             if (response.status === 200)
               return true

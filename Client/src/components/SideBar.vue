@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useProjectStore } from '~/stores/projects'
+import type { AddProject } from '~/types/interfaces'
 
 const store = useProjectStore()
 
@@ -7,10 +8,13 @@ const isHidden = ref(true)
 const showAddProject = () => {
   isHidden.value = false
 }
+const newProject: AddProject = reactive({
+  title: null,
+})
 const projectTitle = ref<string|null>(null)
 const SendProjectToStore = async() => {
-  if (projectTitle.value !== null) {
-    try { await store.addProject(projectTitle.value) }
+  if (newProject.title !== null) {
+    try { await store.addProject(newProject) }
     catch (error) { console.error(error) }
     finally {
       projectTitle.value = null
@@ -49,7 +53,7 @@ const SendProjectToStore = async() => {
     />
     <div v-else>
       <input
-        v-model="projectTitle" class="max-w-44 bg-transparent square-border" type="text"
+        v-model="newProject.title" class="max-w-44 bg-transparent square-border" type="text"
         @keyup.enter="SendProjectToStore"
       >
     </div>
