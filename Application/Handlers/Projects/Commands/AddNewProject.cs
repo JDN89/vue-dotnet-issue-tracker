@@ -1,4 +1,6 @@
+using Application.DTOs;
 using Application.Interfaces;
+using AutoMapper;
 using Domain.Entities;
 using Infrastructure.Persistence;
 using MediatR;
@@ -9,29 +11,29 @@ public class AddNewProject
 {
     public class Command : IRequest
     {
-        public string Title { get; set; }
+        public GetProjectDto NewProject { get; set; }
     }
 
     public class Handler : AsyncRequestHandler<Command>
     {
         private readonly DataContext _context;
         private readonly IUserAccessor _userAccessor;
+        private readonly IMapper _mapper;
 
-        public Handler(DataContext context, IUserAccessor userAccessor)
+        public Handler(DataContext context, IUserAccessor userAccessor, IMapper mapper)
         {
             _context = context;
             _userAccessor = userAccessor;
+            _mapper = mapper;
         }
 
         protected override async Task Handle(Command command, CancellationToken cancellationToken)
         {
             var userId = _userAccessor.GetCurrentUserId();
             var user = _context.Users.SingleOrDefault(u => u.Id == userId);
-            var newProject = new Project
-            {
-                Title = command.Title,  
-                AppUser = user
-            };
+
+            var newProject = (_mapper.Map<Project>(command.NewProject));
+            newProject.AppUser = user;
 
             await _context.Projects.AddAsync(newProject, cancellationToken);
 

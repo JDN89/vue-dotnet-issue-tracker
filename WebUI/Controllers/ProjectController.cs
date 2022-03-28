@@ -17,11 +17,11 @@ public class ProjectController : BaseController
         return await Mediator.Send(new GetAllProjects.Query());
     }
 
-    [HttpPost("{projectTitle}")]
+    [HttpPost]
     [Authorize]
-    public async Task<IResult> AddProject(string projectTitle)
+    public async Task<IResult> AddProject([FromBody] GetProjectDto newProject)
     {
-        await Mediator.Send(new AddNewProject.Command {Title = projectTitle});
+        await Mediator.Send(new AddNewProject.Command {NewProject = newProject});
         return Results.Ok();
     }
 }
