@@ -11,6 +11,9 @@ const showAddProject = () => {
 const newProject: AddProject = reactive({
   title: null,
 })
+const editting = (item: string) => {
+  console.log(item)
+}
 const projectTitle = ref<string|null>(null)
 const SendProjectToStore = async() => {
   if (newProject.title !== null) {
@@ -32,9 +35,7 @@ const SendProjectToStore = async() => {
     <h1 text-3xl py-3>
       My Projects
     </h1>
-    <div i-bx-dots-vertical-rounded i-carbon-add-alt>
-      <EditButton />
-    </div>
+
     <ul>
       <li
         v-for="project in store.getProjects"
@@ -43,7 +44,7 @@ const SendProjectToStore = async() => {
         @click="store.fetchProjectRelatedIssues(project.projectId)"
       >
         {{ project.title }}
-        <EditButton />
+        <EditButton @edit="editting" />
       </li>
     </ul>
     <button
