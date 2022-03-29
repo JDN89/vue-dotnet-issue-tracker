@@ -12,7 +12,14 @@ const newProject: AddProject = reactive({
   title: null,
 })
 const editting = (item: string) => {
-  console.log(item)
+  switch (item) {
+    case 'Rename':
+      console.log('edit logic')
+      break
+    case 'Delete':
+      console.log('delete logic')
+      break
+  }
 }
 const projectTitle = ref<string|null>(null)
 const SendProjectToStore = async() => {
@@ -31,26 +38,29 @@ const SendProjectToStore = async() => {
 </script>
 
 <template>
-  <div id="sidebar" class="min-w-24 max-w-50 flex-1">
+  <div id="sidebar" class="min-w-24 max-w-50 flex-1 ">
     <h1 text-3xl py-3>
       My Projects
     </h1>
 
     <ul>
       <li
+
         v-for="project in store.getProjects"
         :key="project.projectId"
-        class="square-border my-2"
+        class="square-border my-2 "
         @click="store.fetchProjectRelatedIssues(project.projectId)"
       >
-        {{ project.title }}
-        <EditButton @edit="editting" />
+        <div class="relative">
+          {{ project.title }}
+          <EditButton class="relative" @edit="editting" />
+        </div>
       </li>
     </ul>
     <button
       v-if="isHidden"
-      i-carbon-add-alt class="icon-:w
-    btn mb-2" @click="showAddProject"
+      i-carbon-add-alt
+      class="btn mb-2" @click="showAddProject"
     />
     <div v-else>
       <input
