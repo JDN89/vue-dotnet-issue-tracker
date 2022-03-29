@@ -1,9 +1,8 @@
 // @ts-check
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
-// import axios from 'axios'
+import { useRouter } from 'vue-router'
 import type { AddProject, Issue, Project } from '~/types/interfaces'
-// import eventService from '~/composables/eventService'
 
 import { useUserStore } from '~/stores/users'
 import eventService from '~/composables/eventService'
@@ -39,11 +38,12 @@ export const useProjectStore = defineStore({
     // =========================================
     async fetchProjects() {
       const userStore = useUserStore()
-
+      const router = useRouter()
       if (userStore.getToken) {
         await eventService.getAllProjects(userStore.getToken)
           .then((response) => {
-            this.Projects = response.data
+            if (response.status === 401) return router.push({ name: 'account/login' })
+            else return this.Projects = response.data
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
