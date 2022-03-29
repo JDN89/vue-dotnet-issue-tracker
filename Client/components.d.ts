@@ -15,7 +15,7 @@ declare module 'vue' {
     KabanBoard: typeof import('./src/components/kabanboard/KabanBoard.vue')['default']
     OpenIssues: typeof import('./src/components/kabanboard/OpenIssues.vue')['default']
     ReviewIssues: typeof import('./src/components/kabanboard/ReviewIssues.vue')['default']
-    SideBar: typeof import('./src/components/SideBar.vue')['default']
+    SideBar: typeof import('./src/components/kabanboard/sidebar/SideBar.vue')['default']
     Urgency: typeof import('./src/components/kabanboard/issue/Urgency.vue')['default']
   }
 }
