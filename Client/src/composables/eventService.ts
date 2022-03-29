@@ -33,7 +33,13 @@ export default {
       },
     })
   },
-
+  async deleteProject(token: string, id: string) {
+    return await apiClient.delete('project/', id, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
   // =================ISSUE REQUEST ===================
   async getAllOpenIssues(token: string, projectId: string) {
     return await apiClient.get(`openissue/${projectId}`, {
