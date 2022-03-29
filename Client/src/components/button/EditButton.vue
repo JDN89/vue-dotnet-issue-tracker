@@ -1,21 +1,17 @@
 <script setup lang="ts">
 
-const isHidden = ref(true)
-const showHidden = () => {
-  isHidden.value = false
-}
-/* const edit = (item: string) => {
-  console.log(item)
-} */
+const editOptions = ['Rename', 'Delete']
 
-const editArr: string [] = ['Edit', 'Delete']
+const isHidden = ref(true)
 </script>
 
 <template>
-  <button v-if="isHidden" i-bx-dots-vertical-rounded @click="showHidden" />
-  <ul v-else>
-    <li v-for="item in editArr" :key="item" @click="$emit('edit',item)">
-      {{ item }}
-    </li>
-  </ul>
+  <button v-if="isHidden" class="float-right" i-bx-dots-vertical-rounded @click="isHidden=false" />
+  <div v-else class="flex  ">
+    <ul @click="isHidden=true">
+      <li v-for="(option,index) in editOptions" :key="index" class="btn" @click="$emit('edit',option)">
+        {{ option }}
+      </li>
+    </ul>
+  </div>
 </template>
