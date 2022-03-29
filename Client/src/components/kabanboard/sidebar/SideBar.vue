@@ -5,22 +5,10 @@ import type { AddProject } from '~/types/interfaces'
 const store = useProjectStore()
 
 const isHidden = ref(true)
-const showAddProject = () => {
-  isHidden.value = false
-}
 const newProject: AddProject = reactive({
   title: null,
 })
-const editting = (item: string) => {
-  switch (item) {
-    case 'Rename':
-      console.log('edit logic')
-      break
-    case 'Delete':
-      console.log('delete logic')
-      break
-  }
-}
+
 const projectTitle = ref<string|null>(null)
 const SendProjectToStore = async() => {
   if (newProject.title !== null) {
@@ -51,16 +39,13 @@ const SendProjectToStore = async() => {
         class="square-border my-2 "
         @click="store.fetchProjectRelatedIssues(project.projectId)"
       >
-        <div class="relative">
-          {{ project.title }}
-          <EditButton class="relative" @edit="editting" />
-        </div>
+        <Project :id="project.projectId" :title="project.title" />
       </li>
     </ul>
     <button
       v-if="isHidden"
       i-carbon-add-alt
-      class="btn mb-2" @click="showAddProject"
+      class="btn mb-2" @click="isHidden=false"
     />
     <div v-else>
       <input
