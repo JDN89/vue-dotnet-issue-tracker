@@ -113,6 +113,36 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
+    // ===========   DELETE Project  ===============
+    // =========================================
+
+    async deleteProject() {
+      const userStore = useUserStore()
+      const projectId = this.getLoadedProjectId
+      if (userStore.getToken && projectId) {
+        await eventService.deleteProject(userStore.getToken, projectId)
+          .then((response) => {
+            if (response.status === 200)
+              return this.Projects?.push(response.data)
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
+    },
+
+    // =========================================
     // ===========   FETCH OPENISSUES  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
