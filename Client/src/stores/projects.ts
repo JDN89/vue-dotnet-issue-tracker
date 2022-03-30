@@ -119,8 +119,11 @@ export const useProjectStore = defineStore({
       if (userStore.getToken && projectId) {
         await eventService.deleteProject(userStore.getToken, projectId)
           .then((response) => {
-            if (response.status === 200)
-              return this.Projects?.push(response.data)
+            if (response.status === 200) {
+              return this.Projects = this.Projects!.filter((p) => {
+                return p.projectId !== projectId
+              })
+            }
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
