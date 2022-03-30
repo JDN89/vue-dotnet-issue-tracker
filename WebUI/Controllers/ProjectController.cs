@@ -35,4 +35,12 @@ public class ProjectController : BaseController
             await Mediator.Send(new DeleteProject.Command {Id = projectId})
         );
     }
+       [HttpPut]
+        [Authorize]
+        public async Task<IActionResult> UpdateProject([FromBody] GetProjectDto updatedProject)
+        {
+            return HandleResult(
+                await Mediator.Send(new UpdateProject.Command { UpdatedProject = updatedProject})
+            );
+        }
 }
