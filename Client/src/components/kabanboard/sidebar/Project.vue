@@ -1,15 +1,23 @@
 <script setup lang="ts">
 
 import { useProjectStore } from '~/stores/projects'
+import type { UpdateProject } from '~/types/interfaces'
 
 const store = useProjectStore()
 const props = defineProps({ id: String, title: String })
 const projectInputIsHidden = ref(true)
+const updatedProject: UpdateProject = reactive({
+  projectId: null,
+  title: null,
+
+})
 
 const title = ref<string>(props.title!)
-const updateProject = (id: string, title: string) => {
-  console.log(id)
-  console.log(title)
+const updateProject = async(id: string, title: string) => {
+  updatedProject.projectId = id
+  updatedProject.title = title
+  await store.updateProject(updatedProject)
+
   projectInputIsHidden.value = true
 }
 
