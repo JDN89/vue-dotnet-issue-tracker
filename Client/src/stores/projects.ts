@@ -1,7 +1,7 @@
 // @ts-check
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
-import type { AddProject, Issue, Project } from '~/types/interfaces'
+import type { AddProject, Issue, Project, UpdateProject } from '~/types/interfaces'
 
 import { useUserStore } from '~/stores/users'
 import eventService from '~/composables/eventService'
@@ -142,6 +142,34 @@ export const useProjectStore = defineStore({
       }
     },
 
+    // =========================================
+    // ===========   Updated Project  ===============
+    // =========================================
+
+    async updateProject(project: UpdateProject) {
+      const userStore = useUserStore()
+      if (userStore.getToken && project) {
+        await eventService.updateProject(userStore.getToken, project)
+          .then((response) => {
+            if (response.status === 200)
+              console.log(response.status)
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
+    },
     // =========================================
     // ===========   FETCH OPENISSUES  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
