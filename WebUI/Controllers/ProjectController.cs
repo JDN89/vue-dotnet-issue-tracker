@@ -23,9 +23,16 @@ public class ProjectController : BaseController
     public async Task<IActionResult> AddProject([FromBody] GetProjectDto newProject)
     {
         return HandleResult(
-
             await Mediator.Send(new AddNewProject.Command {NewProject = newProject})
         );
+    }
 
+    [HttpDelete("{projectId}")]
+    [Authorize]
+    public async Task<IActionResult> DeleteProject(Guid projectId)
+    {
+        return HandleResult(
+            await Mediator.Send(new DeleteProject.Command {Id = projectId})
+        );
     }
 }
