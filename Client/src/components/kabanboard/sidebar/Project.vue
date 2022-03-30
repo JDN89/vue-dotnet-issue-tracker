@@ -1,5 +1,8 @@
 <script setup lang="ts">
 
+import { useProjectStore } from '~/stores/projects'
+
+const store = useProjectStore()
 const props = defineProps({ id: String, title: String })
 const projectInputIsHidden = ref(true)
 
@@ -10,14 +13,14 @@ const updateProject = (id: string, title: string) => {
   projectInputIsHidden.value = true
 }
 
-const editting = (item: string) => {
+const editting = async(item: string) => {
   switch (item) {
     case 'Rename':
       console.log('edit logic')
       projectInputIsHidden.value = false
       break
     case 'Delete':
-      console.log('delete logic')
+      await store.deleteProject()
       break
   }
 }
