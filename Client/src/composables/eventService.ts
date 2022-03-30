@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AddProject, Issue, LoginUserInterface, RegisterUserInterface } from '../types/interfaces'
+import type { AddProject, Issue, LoginUserInterface, RegisterUserInterface, UpdateProject } from '../types/interfaces'
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
@@ -35,6 +35,13 @@ export default {
   },
   async deleteProject(token: string, id: string) {
     return await apiClient.delete(`project/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
+  async updateProject(token: string, project: UpdateProject) {
+    return await apiClient.put('project/', project, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
