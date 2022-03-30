@@ -41,12 +41,11 @@ public class AddNewProject
 
             var result = await _context.SaveChangesAsync(cancellationToken) > 0;
             if (!result) return Result<GetProjectDto>.Failure("Failed to update activity");
-            
-            var savedProject = await _context.Projects.SingleOrDefaultAsync(p => p.Title == newProject.Title);
-           
-            var savedProjectDto = (_mapper.Map<GetProjectDto>(savedProject));
-                return Result<GetProjectDto>.Success(savedProjectDto);
 
+            var savedProject = await _context.Projects.SingleOrDefaultAsync(p => p.Title == newProject.Title);
+
+            var savedProjectDto = (_mapper.Map<GetProjectDto>(savedProject));
+            return Result<GetProjectDto>.Success(savedProjectDto);
         }
     }
 }
