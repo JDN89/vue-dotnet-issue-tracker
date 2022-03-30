@@ -41,7 +41,7 @@ onUpdated(() => {
   if (userStore.getRegistrationFormIsVisible === false) {
     setTimeout(() => {
       router.push({
-        name: 'acount/login',
+        name: 'account/login',
       })
     }, 2000)
   }
