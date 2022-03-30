@@ -120,8 +120,20 @@ export const useProjectStore = defineStore({
         await eventService.deleteProject(userStore.getToken, projectId)
           .then((response) => {
             if (response.status === 200) {
-              return this.Projects = this.Projects!.filter((p) => {
+              this.Projects = this.Projects!.filter((p) => {
                 return p.projectId !== projectId
+              })
+              this.OpenIssues = this.OpenIssues!.filter((o) => {
+                return o.projectId !== projectId
+              })
+              this.Closed = this.Closed!.filter((c) => {
+                return c.projectId !== projectId
+              })
+              this.InProgress = this.InProgress!.filter((c) => {
+                return c.projectId !== projectId
+              })
+              return this.Review = this.Review!.filter((c) => {
+                return c.projectId !== projectId
               })
             }
           }).catch((error) => {
