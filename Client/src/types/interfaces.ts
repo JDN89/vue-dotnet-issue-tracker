@@ -31,6 +31,12 @@ export interface Project {
   title: string
 
 }
+export interface UpdateProject {
+  projectId: string|null
+
+  title: string|null
+
+}
 export interface AddProject {
   title: string|null
 }
