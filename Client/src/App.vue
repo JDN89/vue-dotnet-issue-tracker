@@ -8,10 +8,24 @@ onBeforeMount(async() => {
   const token = window.localStorage.getItem('token')
   if (token)
     userStore.token = token
+
+  router.beforeEach((to, from, next) => {
+    if (to.meta?.requiresAuth && token)
+      next()
+
+    else if (to.meta?.requiresAuth)
+      next('/login')
+
+    else
+      next()
+  })
+
+/*
   const username = window.localStorage.getItem('username')
 
   if (token && username)
     await router.push(`/hi/${encodeURIComponent(username)}`)
+    */
 })
 
 </script>
