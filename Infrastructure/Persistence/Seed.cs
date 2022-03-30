@@ -239,11 +239,11 @@ public class Seed
                     new InProgressIssue
                     {
                         InProgressIssueId = new Guid(),
-                        Title = "Desing Footer",
+                        Title = "Design Footer",
                         Urgency = "Low",
 
                         //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
-                        Type = "Desing",
+                        Type = "Design",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                     },
