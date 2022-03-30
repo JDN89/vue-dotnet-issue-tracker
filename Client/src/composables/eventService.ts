@@ -34,7 +34,7 @@ export default {
     })
   },
   async deleteProject(token: string, id: string) {
-    return await apiClient.delete('project/', id, {
+    return await apiClient.delete(`project/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
