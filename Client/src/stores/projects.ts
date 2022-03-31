@@ -1,7 +1,7 @@
 // @ts-check
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
-import type { AddProject, Issue, Project, UpdateProject } from '~/types/interfaces'
+import type { AddProject, FocusedIssue, Issue, Project, UpdateProject } from '~/types/interfaces'
 
 import { useUserStore } from '~/stores/users'
 import eventService from '~/composables/eventService'
@@ -13,6 +13,7 @@ interface State {
   Closed: Issue[] | null
   Projects: Project[] | null
   LoadedProjectId: string| null
+  FocusedIssue: FocusedIssue|null
 
 }
 
@@ -28,6 +29,7 @@ export const useProjectStore = defineStore({
     Review: null,
 
     Closed: null,
+    FocusedIssue: null,
   }),
 
   actions: {
@@ -423,6 +425,7 @@ export const useProjectStore = defineStore({
     getClosed: (state: State) => state.Closed,
     getProjects: (state: State) => state.Projects,
     getLoadedProjectId: (state: State) => state.LoadedProjectId,
+    getFocussedIssue: (state: State) => state.FocusedIssue,
 
   },
 })
