@@ -98,7 +98,7 @@ export default {
     })
   },
   async updateAllClosedIssues(token: string, closedIssues: Issue[], projectId: string) {
-    return await apiClient.put(`issuesInReview/${projectId}`, closedIssues, {
+    return await apiClient.put(`ClosedIssues/${projectId}`, closedIssues, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -332,7 +332,6 @@ export const useProjectStore = defineStore({
 
     // =========================================
     // ===========   UPDATE ISSUES INPROGRESS  ===============
-    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
     async updateAllIssuesInProgress(issues: Issue[]) {
@@ -362,7 +361,6 @@ export const useProjectStore = defineStore({
 
     // =========================================
     // ===========   UPDATE TO BE TESTED  ===============
-    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
     async updateAllIssuesInReview(issues: Issue[]) {
@@ -390,7 +388,6 @@ export const useProjectStore = defineStore({
     },
     // =========================================
     // ===========   UPDATE CLOSED ISSUES  ===============
-    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
     async updateAllClosedIssues(issues: Issue[]) {
