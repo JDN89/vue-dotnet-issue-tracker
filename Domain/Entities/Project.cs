@@ -7,6 +7,6 @@ public class Project
     public AppUser AppUser { get; set; }
     public ICollection<OpenIssue> OpenIssues { get; set; }
     public ICollection<InProgressIssue> InProgressIssues{ get; set; }
-    public ICollection<IssueInReview> TestIssues { get; set; }
+    public ICollection<IssueInReview> IssuesInReview { get; set; }
     public ICollection<ClosedIssue> ClosedIssues { get; set; }
 }
