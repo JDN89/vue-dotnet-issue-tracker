@@ -14,12 +14,12 @@ const urgencyStyle = computed(() => {
 
 <template>
   <div
-    class="flex bg-gray-400 bg-opacity-50 fixed left-0 right-0 bottom-0 top-0 items-center"
+    class="flex bg-gray-700 bg-opacity-50 fixed left-0 right-0 bottom-0 top-0 items-center"
   >
     <div
-      class="msg min-h-44 max-h-lg w-full m-1 p-2 sm:max-w-70 content-center sm:mx-auto mx-auto"
+      class=" min-h-44 max-h-lg w-full m-1 p-2 sm:max-w-70 content-center sm:mx-auto mx-auto"
     >
-      <div class="square-border" :class="`${urgencyStyle}`">
+      <div class="square-border bg-light-500" :class="`${urgencyStyle}`" @click="store.ShowFocusedIssue=false">
         <div
           class=" flex justify-between m-3"
         >
@@ -36,8 +36,10 @@ const urgencyStyle = computed(() => {
             {{ focusedIssue.type }}
           </Badge>
         </div>
-        <div class="flex mx-2 mx-auto justify-between items-center">
-          <p>{{ focusedIssue.description }}</p>
+        <div class="flex mx-auto justify-between items-center">
+          <p class="m-2 ">
+            {{ focusedIssue.description }}
+          </p>
         </div>
       </div>
     </div>
