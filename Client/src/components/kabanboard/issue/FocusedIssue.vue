@@ -1,10 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{ title: string; urgency: string; date: string; type: string ;description: string }>()
 
+import { useProjectStore } from '~/stores/projects'
+import type { FocusedIssue } from '~/types/interfaces'
+
+const store = useProjectStore()
+const focusedIssue: FocusedIssue = store.getFocussedIssue!
 const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
 
 const urgencyStyle = computed(() => {
-  return myUrgencyStyles.get(props.urgency)!
+  return myUrgencyStyles.get(focusedIssue.urgency)!
 })
 </script>
 
@@ -12,8 +16,6 @@ const urgencyStyle = computed(() => {
   <div
     class="flex bg-gray-400 bg-opacity-50 fixed left-0 right-0 bottom-0 top-0 items-center"
   >
-    :w
-
     <div
       class="msg min-h-44 max-h-lg w-full m-1 p-2 sm:max-w-70 content-center sm:mx-auto mx-auto"
     >
@@ -22,20 +24,20 @@ const urgencyStyle = computed(() => {
           class=" flex justify-between m-3"
         >
           <p class="font-semibold font-sans tracking-wide text-sm">
-            {{ props.title }}
+            {{ focusedIssue.title }}
           </p>
-          <Urgency :urgency="props.urgency">
-            {{ props.urgency.toUpperCase() }}
+          <Urgency :urgency="focusedIssue.urgency">
+            {{ focusedIssue.urgency.toUpperCase() }}
           </Urgency>
         </div>
         <div class="flex m-2 justify-between items-center">
-          <span class="text-sm text-gray-600 dark:text-gray-300">{{ props.date }}</span>
-          <Badge :type="props.type">
-            {{ props.type }}
+          <span class="text-sm text-gray-600 dark:text-gray-300">{{ focusedIssue.date }}</span>
+          <Badge :type="focusedIssue.type">
+            {{ focusedIssue.type }}
           </Badge>
         </div>
         <div class="flex mx-2 mx-auto justify-between items-center">
-          <p>{{ props.description }}</p>
+          <p>{{ focusedIssue.description }}</p>
         </div>
       </div>
     </div>
