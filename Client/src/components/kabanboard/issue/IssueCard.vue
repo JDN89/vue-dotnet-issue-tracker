@@ -1,18 +1,31 @@
 <script setup lang="ts">
-const props = defineProps<{ title: string; urgency: string; date: string; type: string; description: string; progress: string }>()
+
+import { useProjectStore } from '~/stores/projects'
+import type { FocusedIssue } from '~/types/interfaces'
+const store = useProjectStore()
+const props = defineProps<{ id: string; title: string; urgency: string; date: string; type: string; description: string; progress: string }>()
+const focusedIssue: FocusedIssue|null = reactive({
+  id: props.id,
+  title: props.title,
+  progress: props.progress,
+  description: props.description,
+  date: props.date,
+  type: props.type,
+  urgency: props.urgency,
+})
 
 const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
 
 const urgencyStyle = computed(() => {
   return myUrgencyStyles.get(props.urgency)!
 })
-const checkInfo = (props: any) => {
-  console.log(props)
+const storeFocusedIssueInfo = (issue: FocusedIssue) => {
+  return console.log(issue)
 }
 </script>
 
 <template>
-  <div @click="checkInfo(props)">
+  <div @click="storeFocusedIssueInfo(focusedIssue)">
     <div class="square-border" :class="`${urgencyStyle}`">
       <div
         class=" flex justify-between m-3"

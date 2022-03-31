@@ -23,7 +23,7 @@ onBeforeUpdate(async() => {
   >
     <template #item="{ element } ">
       <div class="m-4 ">
-        <IssueCard :title="element.title" :urgency="element.urgency" :date="element.localDate" :type="element.type" :description="element.description" :progress="'Open'" />
+        <IssueCard :id="element.openIssueId" :title="element.title" :urgency="element.urgency" :date="element.localDate" :type="element.type" :description="element.description" :progress="'Open'" />
       </div>
     </template>
   </draggable>
