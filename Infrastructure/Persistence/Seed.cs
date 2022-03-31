@@ -35,7 +35,7 @@ public class Seed
                             {
                                 new OpenIssue
                                 {
-                                    OpenIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Add right margin to Checkout button",
                                     Urgency = "High",
                                     Type = "Design",
@@ -44,7 +44,7 @@ public class Seed
                                 },
                                 new OpenIssue
                                 {
-                                    OpenIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Add discount code to the checkout page",
                                     Urgency = "High",
                                     
@@ -58,7 +58,7 @@ public class Seed
                             {
                                 new InProgressIssue
                                 {
-                                    InProgressIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Create A Cart Button",
                                     Urgency = "Medium",
                                     Type = "Feature Request",
@@ -67,7 +67,7 @@ public class Seed
                                 },
                                 new InProgressIssue
                                 {
-                                    InProgressIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Provide Documentation on Functionality",
                                     Urgency = "Low",
                                     
@@ -77,7 +77,7 @@ public class Seed
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 },    new InProgressIssue
                                 {
-                                    InProgressIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Desing Footer",
                                     Urgency = "Low",
                                     
@@ -87,7 +87,7 @@ public class Seed
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 } ,   new InProgressIssue
                                 {
-                                    InProgressIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Provide Documentation on State",
                                     Urgency = "Medium",
                                     
@@ -101,7 +101,7 @@ public class Seed
                             {
                                 new IssueInReview
                                 {
-                                    IssueInReviewId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Design dropdown menu for shopping cart",
                                     Urgency = "Medium",
                                     Type = "Design",
@@ -110,7 +110,7 @@ public class Seed
                                 },
                                 new IssueInReview
                                 {
-                                    IssueInReviewId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Display Items in 4 Grid columns",
                                     Urgency = "High",
                                     
@@ -120,7 +120,7 @@ public class Seed
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 },   new IssueInReview
                                 {
-                                    IssueInReviewId = new Guid(),
+                                    Id = new Guid(),
                                     Title = "Create login Controller",
                                     Urgency = "High",
                                     
@@ -133,7 +133,7 @@ public class Seed
                             {
                                 new ClosedIssue
                                 {
-                                    ClosedIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Fix DB connection String",
                                     Urgency = "High",
                                     Type = "Backend",
@@ -142,7 +142,7 @@ public class Seed
                                 },
                                 new ClosedIssue
                                 {
-                                    ClosedIssueId    = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Review login user interface flow",
                                     Urgency = "High",
                                     
@@ -152,7 +152,7 @@ public class Seed
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 },   new ClosedIssue
                                 {
-                                    ClosedIssueId = new Guid(),
+                                    Id= new Guid(),
                                     Title = "Add Total Sum to checkout Page",
                                     Urgency = "High",
                                     
@@ -195,7 +195,7 @@ public class Seed
                 {
                     new OpenIssue
                     {
-                        OpenIssueId = new Guid(),
+                        Id = new Guid(),
                         Title = "Add right margin to Checkout button",
                         Urgency = "High",
                         Type = "Design",
@@ -204,7 +204,7 @@ public class Seed
                     },
                     new OpenIssue
                     {
-                        OpenIssueId = new Guid(),
+                       Id = new Guid(),
                         Title = "Add discount code to the checkout page",
                         Urgency = "High",
 
@@ -218,7 +218,7 @@ public class Seed
                 {
                     new InProgressIssue
                     {
-                        InProgressIssueId = new Guid(),
+                        Id = new Guid(),
                         Title = "Create A Cart Button",
                         Urgency = "Medium",
                         Type = "Feature Request",
@@ -227,7 +227,7 @@ public class Seed
                     },
                     new InProgressIssue
                     {
-                        InProgressIssueId = new Guid(),
+                        Id = new Guid(),
                         Title = "Provide Documentation on Functionality",
                         Urgency = "Low",
 
@@ -238,7 +238,7 @@ public class Seed
                     },
                     new InProgressIssue
                     {
-                        InProgressIssueId = new Guid(),
+                        Id = new Guid(),
                         Title = "Design Footer",
                         Urgency = "Low",
 
@@ -249,7 +249,7 @@ public class Seed
                     },
                     new InProgressIssue
                     {
-                        InProgressIssueId = new Guid(),
+                        Id= new Guid(),
                         Title = "Provide Documentation on State",
                         Urgency = "Medium",
 
@@ -263,7 +263,7 @@ public class Seed
                 {
                     new IssueInReview
                     {
-                        IssueInReviewId = new Guid(),
+                        Id = new Guid(),
                         Title = "Design dropdown menu for shopping cart",
                         Urgency = "Medium",
                         Type = "Design",
@@ -272,7 +272,7 @@ public class Seed
                     },
                     new IssueInReview
                     {
-                        IssueInReviewId = new Guid(),
+                        Id= new Guid(),
                         Title = "Display Items in 4 Grid columns",
                         Urgency = "High",
 
@@ -283,7 +283,7 @@ public class Seed
                     },
                     new IssueInReview
                     {
-                        IssueInReviewId = new Guid(),
+                        Id= new Guid(),
                         Title = "Create login Controller",
                         Urgency = "High",
 
@@ -297,7 +297,7 @@ public class Seed
                 {
                     new ClosedIssue
                     {
-                        ClosedIssueId = new Guid(),
+                        Id = new Guid(),
                         Title = "Fix DB connection String",
                         Urgency = "High",
                         Type = "Backend",
@@ -306,7 +306,7 @@ public class Seed
                     },
                     new ClosedIssue
                     {
-                        ClosedIssueId = new Guid(),
+                        Id = new Guid(),
                         Title = "Review login user interface flow",
                         Urgency = "High",
 
@@ -317,7 +317,7 @@ public class Seed
                     },
                     new ClosedIssue
                     {
-                        ClosedIssueId = new Guid(),
+                        Id= new Guid(),
                         Title = "Add Total Sum to checkout Page",
                         Urgency = "High",
 

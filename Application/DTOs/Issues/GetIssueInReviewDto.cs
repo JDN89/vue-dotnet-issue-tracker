@@ -2,6 +2,6 @@ namespace Application.DTOs.Issues;
 
 public class GetIssueInReviewDto : BaseIssueDto
 {
-    public Guid IssueInReviewId{ get; set; }
+    public Guid Id { get; set; }
  
 }
