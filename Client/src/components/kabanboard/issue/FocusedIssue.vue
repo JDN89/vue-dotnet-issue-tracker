@@ -10,6 +10,7 @@ const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low',
 const urgencyStyle = computed(() => {
   return myUrgencyStyles.get(focusedIssue.urgency)!
 })
+const inputsHidden = ref<boolean>(false)
 </script>
 
 <template>
@@ -17,29 +18,30 @@ const urgencyStyle = computed(() => {
     class="flex bg-gray-700 bg-opacity-50 fixed left-0 right-0 bottom-0 top-0 items-center"
   >
     <div
-      class=" min-h-44 max-h-lg w-full m-1 p-2 sm:max-w-70 content-center sm:mx-auto mx-auto"
+      class=" min-h-44 min-w-auto max-h-auto w-full m-1 p-2 sm:max-w-70 content-center sm:mx-auto mx-auto"
     >
       <div class="square-border bg-light-500" :class="`${urgencyStyle}`" @click="store.ShowFocusedIssue=false">
         <div
           class=" flex justify-between m-3"
         >
           <p class="font-semibold font-sans tracking-wide text-sm">
-            {{ focusedIssue.title }}
+            {{ store.getFocussedIssue!.title }}
           </p>
-          <Urgency :urgency="focusedIssue.urgency">
-            {{ focusedIssue.urgency.toUpperCase() }}
+          <Urgency :urgency="store.getFocussedIssue!.urgency">
+            {{ store.getFocussedIssue!.urgency.toUpperCase() }}
           </Urgency>
         </div>
         <div class="flex m-2 justify-between items-center">
-          <span class="text-sm text-gray-600 dark:text-gray-300">{{ focusedIssue.date }}</span>
-          <Badge :type="focusedIssue.type">
+          <span class="text-sm text-gray-600 dark:text-gray-300">{{ store.getFocussedIssue!.date }}</span>
+          <Badge :type="store.getFocussedIssue!.type">
             {{ focusedIssue.type }}
           </Badge>
         </div>
         <div class="flex mx-auto justify-between items-center">
-          <p class="m-2 ">
-            {{ focusedIssue.description }}
+          <p v-if="inputsHidden" class="m-2 ">
+            {{ store.getFocussedIssue!.description }}
           </p>
+          <textarea v-else v-model="store.getFocussedIssue!.description" class="min-h-lg h-auto min-w-full overflow-auto" />
         </div>
       </div>
     </div>

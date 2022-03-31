@@ -14,6 +14,7 @@ interface State {
   Projects: Project[] | null
   LoadedProjectId: string| null
   FocusedIssue: FocusedIssue|null
+  ShowFocusedIssue: boolean
 
 }
 
@@ -30,6 +31,18 @@ export const useProjectStore = defineStore({
 
     Closed: null,
     FocusedIssue: null,
+
+    /*
+    FocusedIssue: {
+      id: 'default',
+      title: 'default',
+      description: 'default',
+      date: 'default',
+      urgency: 'default',
+      type: 'default',
+      progress: 'Defult',
+    }, */
+    ShowFocusedIssue: false,
   }),
 
   actions: {
@@ -426,6 +439,7 @@ export const useProjectStore = defineStore({
     getProjects: (state: State) => state.Projects,
     getLoadedProjectId: (state: State) => state.LoadedProjectId,
     getFocussedIssue: (state: State) => state.FocusedIssue,
+    getShowfocusedIssue: (state: State) => state.ShowFocusedIssue,
 
   },
 })
