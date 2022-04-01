@@ -257,6 +257,10 @@ export const useProjectStore = defineStore({
       }
     },
 
+    async deleteIssue(issue: FocusedIssue) {
+      console.log(issue)
+    },
+
     // =========================================
     // ===========   FETCH ISSUES TO BE TESTED   ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
