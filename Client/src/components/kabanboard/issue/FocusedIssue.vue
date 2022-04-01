@@ -22,7 +22,8 @@ const editting = async(item: string) => {
       break
     case 'Delete':
       console.log('delete logic')
-      if (store.getFocussedIssue) return await store.deleteIssue(store.getFocussedIssue)
+      if (store.getFocussedIssue) await store.deleteIssue(store.getFocussedIssue)
+      store.ShowFocusedIssue = false
       break
   }
 }
