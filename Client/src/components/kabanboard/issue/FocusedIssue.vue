@@ -10,18 +10,26 @@ const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low',
 const urgencyStyle = computed(() => {
   return myUrgencyStyles.get(focusedIssue.urgency)!
 })
-const editOptionsHidden = ref<boolean>(false)
+const editButtonHidden = ref<boolean>(false)
+const editFieldsHidden = ref<boolean> (true)
 const editting = async(item: string) => {
   switch (item) {
     case 'Edit':
       console.log('edit logic')
+      editFieldsHidden.value = false
+      editButtonHidden.value = true
 
       break
     case 'Delete':
       console.log('delete logic')
-
+      if (store.getFocussedIssue) return await store.deleteIssue(store.getFocussedIssue)
       break
   }
+}
+const uploadEdditedIssue = () => {
+  editFieldsHidden.value = true
+  store.ShowFocusedIssue = false
+  console.log('send new Issue options to the store')
 }
 </script>
 
@@ -42,7 +50,8 @@ const editting = async(item: string) => {
           <Urgency :urgency="store.getFocussedIssue!.urgency">
             {{ store.getFocussedIssue!.urgency.toUpperCase() }}
           </Urgency>
-          <EditButton class="relative" @edit="editting" />
+          <EditButton v-if="!editButtonHidden" class="relative" @edit="editting" />
+          <i v-else i-carbon-fetch-upload-cloud @click="uploadEdditedIssue" />
         </div>
         <div class="flex m-2 justify-between items-center">
           <span class="text-sm text-gray-600 dark:text-gray-300">{{ store.getFocussedIssue!.date }}</span>
@@ -51,7 +60,7 @@ const editting = async(item: string) => {
           </Badge>
         </div>
         <div class="flex mx-auto justify-between items-center">
-          <p v-if="editOptionsHidden" class="m-2 ">
+          <p v-if="editFieldsHidden" class="m-2 ">
             {{ store.getFocussedIssue!.description }}
           </p>
           <textarea v-else v-model="store.getFocussedIssue!.description" class="min-h-lg h-auto min-w-full overflow-auto" />
