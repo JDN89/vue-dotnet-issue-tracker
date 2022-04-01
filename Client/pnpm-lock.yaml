@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config': ^0.16.1
   '@iconify-json/ant-design': ^1.1.1
+  '@iconify-json/bx': ^1.1.2
   '@iconify-json/carbon': ^1.0.15
   '@types/node': ^17.0.17
   '@types/uuid': ^8.3.4
@@ -29,6 +30,7 @@ specifiers:
   yup: ^0.32.11
 
 dependencies:
+  '@iconify-json/bx': 1.1.2
   '@vueuse/core': 7.6.1_vue@3.2.30
   pinia: 2.0.11_typescript@4.5.5+vue@3.2.30
   vee-validate: 4.5.9_vue@3.2.30
@@ -244,6 +246,12 @@ packages:
       '@iconify/types': 1.0.12
     dev: true
 
+  /@iconify-json/bx/1.1.2:
+    resolution: {integrity: sha512-aITMwliHaW8QrxAh6/hx1wkYAXWYR6iVYsAxerK3b5NpxuYvmfXWPgtpuQC7xaPbfab3Rxj0YJLJmA6WGy59rw==}
+    dependencies:
+      '@iconify/types': 1.0.12
+    dev: false
+
   /@iconify-json/carbon/1.0.15:
     resolution: {integrity: sha512-KEPnhYb42DpqyrDsUPMvWCr90R9/ZOOu3eRTcnyq+dRLeP+UMBz0bKfcFXtw9PVLSVRpvI1sPoHNeuaans8FDw==}
     dependencies:
@@ -252,7 +260,6 @@ packages:
 
   /@iconify/types/1.0.12:
     resolution: {integrity: sha512-6er6wSGF3hgc1JEZqiGpg21CTCjHBYOUwqLmb2Idzkjiw6ogalGP0ZMLVutCzah+0WB4yP+Zd2oVPN8jvJ+Ftg==}
-    dev: true
 
   /@iconify/utils/1.0.23:
     resolution: {integrity: sha512-Ktdmpe4mkMXQAnnDUz3s6s5aY/BeVPwHC1d5IhG1bgrWVNWFQNUj8cQPMbHpNCSD9MRC5yGxm9/PGPpOWGJLAg==}
