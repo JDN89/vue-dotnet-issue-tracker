@@ -23,7 +23,7 @@ const updateProject = async(id: string, title: string) => {
 
 const editting = async(item: string) => {
   switch (item) {
-    case 'Rename':
+    case 'Edit':
       console.log('edit logic')
       projectInputIsHidden.value = false
       break

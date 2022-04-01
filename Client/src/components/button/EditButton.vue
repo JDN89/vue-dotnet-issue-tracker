@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-const editOptions = ['Rename', 'Delete']
+const editOptions = ['Edit', 'Delete']
 
 const isHidden = ref(true)
 </script>
