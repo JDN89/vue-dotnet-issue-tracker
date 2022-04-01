@@ -258,6 +258,22 @@ export const useProjectStore = defineStore({
     },
 
     async deleteIssue(issue: FocusedIssue) {
+      switch (issue.progress) {
+        case 'Open':
+          console.log('send id to /openIssue/{issueId}')
+
+          break
+        case 'InProgress':
+          console.log('send id to /IssuesInProgress/{issueId}')
+
+          break
+        case 'InReview':
+          console.log('send id to /issuesInReview/{issueId}')
+          break
+        case 'Closed':
+          console.log('send to /closed')
+          break
+      }
       console.log(issue)
     },
 
