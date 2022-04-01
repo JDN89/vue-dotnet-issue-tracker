@@ -2,33 +2,48 @@
 
 import { useProjectStore } from '~/stores/projects'
 const store = useProjectStore()
+const addIssue = () => {
+  console.log('load create issue component on bottom, with default input values and choice options>Finish first edit issue and then reuse the input fields')
+}
 </script>
 
 <template>
   <div>
     <div id="Kaban-Board" class="flex gap-3 flex-row justify-around flex-1">
       <div class="min-w-34 max-w-80">
-        <h1 text-3xl mb-5>
-          Open
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="text-3xl mb-5 pr-5">
+            Open
+          </h1>
+          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
+        </div>
         <OpenIssues />
       </div>
       <div class="min-w-24 max-w-80">
-        <h1 text-3xl mb-5>
-          In Progress
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="text-3xl mb-5 pr-5">
+            In Progress
+          </h1>
+          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
+        </div>
         <IssuesInProgress />
       </div>
       <div class="min-w-34 max-w-80">
-        <h1 text-3xl mb-5>
-          In Review
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="text-3xl mb-5 pr-5">
+            In Review
+          </h1>
+          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
+        </div>
         <ReviewIssues />
       </div>
       <div class="min-w-34 max-w-80">
-        <h1 text-3xl mb-5>
-          Closed
-        </h1>
+        <div class="flex justify-center">
+          <h1 class="text-3xl mb-5 pr-5">
+            Closed
+          </h1>
+          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
+        </div>
         <ClosedIssues />
       </div>
     </div>
