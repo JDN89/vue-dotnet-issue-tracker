@@ -1,15 +1,13 @@
 <script setup lang="ts">
 
 import { useProjectStore } from '~/stores/projects'
-import type { FocusedIssue } from '~/types/interfaces'
 
 const store = useProjectStore()
-const newIssue: FocusedIssue = reactive(Object.assign({}, store.getFocussedIssue!))
 
 const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
 
 const urgencyStyle = computed(() => {
-  return myUrgencyStyles.get(newIssue.urgency)!
+  return myUrgencyStyles.get(store.getFocussedIssue!.urgency)!
 })
 const urgencyOptions = ['LOW', 'MEDIUM', 'HIGH']
 const urgencyOptionsHidden = ref(true)
@@ -23,6 +21,15 @@ const updateUrgency = (urgency: string) => {
   console.log(store.getFocussedIssue)
 }
 
+const IssueTypes = ['Design', 'Backend', 'Feature Request', 'QA']
+const issueTypesHidden = ref(true)
+const showFeatureTypes = () => {
+  issueTypesHidden.value = false
+}
+const updateType = (type: string) => {
+  store.FocusedIssue!.type = type
+  issueTypesHidden.value = true
+}
 const editButtonHidden = ref<boolean>(false)
 const editFieldsHidden = ref<boolean> (true)
 const editting = async(item: string) => {
@@ -43,7 +50,6 @@ const uploadEdditedIssue = () => {
   editFieldsHidden.value = true
   store.ShowFocusedIssue = false
   console.log('send new Issue options to the store')
-  console.log(newIssue)
 }
 </script>
 
@@ -58,9 +64,12 @@ const uploadEdditedIssue = () => {
         <div
           class=" flex justify-between m-3"
         >
-          <p class="font-semibold font-sans tracking-wide text-sm">
-            {{ store.getFocussedIssue!.title }}
-          </p>
+          <div>
+            <p v-if="editFieldsHidden" class="font-semibold font-sans tracking-wide text-sm">
+              {{ store.getFocussedIssue!.title }}
+            </p>
+            <input v-else v-model="store.getFocussedIssue!.title" type="text" class="bg-transparent">
+          </div>
           <div v-if="urgencyOptionsHidden" class="flex justify-around">
             <Urgency urgency="store.getFocussedIssue!.urgency">
               {{ store.getFocussedIssue!.urgency.toUpperCase() }}
@@ -79,16 +88,27 @@ const uploadEdditedIssue = () => {
         </div>
         <div class="flex m-1 justify-between items-center">
           <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">{{ store.getFocussedIssue!.date }}</span>
-          <Badge :type="store.getFocussedIssue!.type" class="pl-7">
-            {{ newIssue.type }}
-          </Badge>
+          <div v-if="issueTypesHidden" class="flex justify-around">
+            <Badge :type="store.getFocussedIssue!.type" class="pl-2">
+              {{ store.getFocussedIssue!.type }}
+            </Badge>
+            <button v-if="!editFieldsHidden" i-bx-dots-vertical-rounded @click="showFeatureTypes" />
+          </div>
+          <div v-else>
+            <ul class="flex flex-col">
+              <li v-for="(type ,index) in IssueTypes" :key="index" class=" min-w-10 max-w-39 btn m-1 float-right" @click="updateType(type)">
+                {{ type }}
+              </li>
+            </ul>
+          </div>
+
           <span />
         </div>
         <div class="flex mx-auto justify-between items-center">
           <p v-if="editFieldsHidden" class="m-2 ">
             {{ store.getFocussedIssue!.description }}
           </p>
-          <textarea v-else v-model="store.getFocussedIssue!.description" class="min-h-lg h-auto min-w-full overflow-auto" />
+          <textarea v-else v-model="store.getFocussedIssue!.description" class="min-h-lg h-auto min-w-full overflow-auto bg-transparent" />
         </div>
       </div>
     </div>
