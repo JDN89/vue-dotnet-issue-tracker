@@ -30,6 +30,7 @@ const inputsHidden = ref<boolean>(false)
           <Urgency :urgency="store.getFocussedIssue!.urgency">
             {{ store.getFocussedIssue!.urgency.toUpperCase() }}
           </Urgency>
+          <i i-bx-dots-vertical-rounded />
         </div>
         <div class="flex m-2 justify-between items-center">
           <span class="text-sm text-gray-600 dark:text-gray-300">{{ store.getFocussedIssue!.date }}</span>
