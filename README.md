@@ -84,8 +84,4 @@ Dummy user:
 - This project is a continuation of my former issue-tracker repo https://github.com/JDN89/issue-tracker-discontinued .
 <br/> Github was not displaying my commits in my activity graph (that's why there is a gap in 02/2022 and 03/2022). 
 <br/> The only solution I found was creating a new repo (this one) and cloning my old repo into this one.
-
-
-<br/> 
-Feel free to contact me at jan.de.niels@gmail.com for comments, improvements or for sharing your cloned repo with me 
     
