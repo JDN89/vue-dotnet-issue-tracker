@@ -13,6 +13,7 @@ declare module 'vue' {
     IssueCard: typeof import('./src/components/kabanboard/issue/IssueCard.vue')['default']
     IssuesInProgress: typeof import('./src/components/kabanboard/IssuesInProgress.vue')['default']
     KabanBoard: typeof import('./src/components/kabanboard/KabanBoard.vue')['default']
+    NewIssue: typeof import('./src/components/kabanboard/issue/NewIssue.vue')['default']
     OpenIssues: typeof import('./src/components/kabanboard/OpenIssues.vue')['default']
     Project: typeof import('./src/components/kabanboard/sidebar/Project.vue')['default']
     ReviewIssues: typeof import('./src/components/kabanboard/ReviewIssues.vue')['default']
