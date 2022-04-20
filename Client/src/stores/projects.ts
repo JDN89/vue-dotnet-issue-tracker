@@ -257,6 +257,11 @@ export const useProjectStore = defineStore({
       }
     },
 
+    // =========================================
+    // ===========   DELTE ISSUES  ===============
+    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
+    // =========================================
+
     async deleteIssue(issue: FocusedIssue) {
       switch (issue.progress) {
         case 'Open':
@@ -447,6 +452,32 @@ export const useProjectStore = defineStore({
             }
           })
       }
+    },
+
+    // =========================================
+    // ===========   DuPDATE SINGLE ISSUE  ===============
+    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
+    // =========================================
+
+    async updateIssue(issue: FocusedIssue) {
+      switch (issue.progress) {
+        case 'Open':
+          console.log('send id to /openIssue/{issueId}')
+          console.log(issue.description)
+
+          break
+        case 'InProgress':
+          console.log('send id to /IssuesInProgress/{issueId}')
+
+          break
+        case 'InReview':
+          console.log('send id to /issuesInReview/{issueId}')
+          break
+        case 'Closed':
+          console.log('send to /closed')
+          break
+      }
+      console.log(issue)
     },
 
   },
