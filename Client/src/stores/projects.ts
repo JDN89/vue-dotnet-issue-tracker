@@ -1,7 +1,7 @@
 // @ts-check
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
-import type { AddProject, FocusedIssue, Issue, Project, UpdateProject } from '~/types/interfaces'
+import type { AddProject, FocusedIssue, Issue, Project, UpdateIssue, UpdateProject } from '~/types/interfaces'
 
 import { useUserStore } from '~/stores/users'
 import eventService from '~/composables/eventService'
@@ -455,13 +455,42 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
-    // ===========   DuPDATE SINGLE ISSUE  ===============
+    // ===========   UPDATE SINGLE ISSUE  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
     async updateIssue(issue: FocusedIssue) {
+      // I created UpdateIssue (type front end) and UpdateIssue Class(backend) becaus we only need to update 4 properties
+      // easier to convert FocusedIssue (type) to UpdateIssue(type)
+      // compared to Issue(type) to (UpdateIssue)
+      // PLUS if I Send all the Issue or Focussed properties to backend I send unecessary data
+      const issueDto: UpdateIssue = issue
+
+      const userStore = useUserStore()
       switch (issue.progress) {
         case 'Open':
+          if (userStore.getToken) {
+            console.log(issueDto)
+
+            await eventService.updateSingleOpenIssue(userStore.getToken, issueDto)
+              .then((response) => {
+                if (response.status === 200) console.log('Open Issue updated')
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           console.log('send id to /openIssue/{issueId}')
           console.log(issue.description)
 
