@@ -32,7 +32,17 @@ export interface FocusedIssue {
   date: string
   type: string
   urgency: string
+  localDate: string
 }
+
+export interface UpdateIssue {
+  id: string
+  title: string
+  urgency: string
+  type: string
+  description: string
+}
+
 export interface Project {
   projectId: string
 
