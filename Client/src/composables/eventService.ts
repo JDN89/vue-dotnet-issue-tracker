@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AddProject, Issue, LoginUserInterface, RegisterUserInterface, UpdateProject } from '../types/interfaces'
+import type { AddProject, Issue, LoginUserInterface, RegisterUserInterface, UpdateIssue, UpdateProject } from '../types/interfaces'
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
@@ -47,16 +47,16 @@ export default {
       },
     })
   },
-  // =================ISSUE REQUEST ===================
+  // ================= All PROJECT RELATED ISSUES REQUEST ===================
   async getAllOpenIssues(token: string, projectId: string) {
-    return await apiClient.get(`openissue/${projectId}`, {
+    return await apiClient.get(`openissues/${projectId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
   },
   async updateAllOpenIssues(token: string, openIssues: Issue[], projectId: string) {
-    return await apiClient.put(`openissue/${projectId}`, openIssues, {
+    return await apiClient.put(`openissues/${projectId}`, openIssues, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -99,6 +99,16 @@ export default {
   },
   async updateAllClosedIssues(token: string, closedIssues: Issue[], projectId: string) {
     return await apiClient.put(`ClosedIssues/${projectId}`, closedIssues, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
+
+  // ================= SINGLE ISSUE REQUEST ===================
+
+  async updateSingleOpenIssue(token: string, openIssue: UpdateIssue) {
+    return await apiClient.put('OpenIssues/UpdateSingleOpenIssue', openIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
