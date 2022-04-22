@@ -38,15 +38,15 @@ const updateType = (type: string) => {
   newIssue.type = type
   issueTypesHidden.value = true
 }
-const editFieldsHidden = ref<boolean>(true)
-
 const addNewIssue = async() => {
-  editFieldsHidden.value = true
-  store.ShowNewIssue = false
-  if (newIssue.title.length === 0 || newIssue.description.length === 0)
-    alert('title and or description or missing!')
+  if (newIssue.title.length === 0 || newIssue.description.length === 0) {
+    return alert('title and or description or missing!')
+  }
 
-  else return await store.addIssue(newIssue)
+  else {
+    store.ShowNewIssue = false
+    return await store.addIssue(newIssue)
+  }
 }
 </script>
 
@@ -57,6 +57,7 @@ const addNewIssue = async() => {
     >
       <div class="square-border flex-col  h-auto w-auto bg-light-500" :class="`${urgencyStyle}`">
         <div class="flex h-auto justify-between m-3">
+          <i i-carbon-fetch-upload-cloud class="cursor-pointer" @click="addNewIssue" />
           <div v-if="urgencyOptionsHidden" class="flex cursor-pointer justify-around">
             <Urgency
               urgency="newIssue.urgency"
@@ -94,8 +95,7 @@ const addNewIssue = async() => {
               </li>
             </ul>
           </div>
-
-          <i i-carbon-fetch-upload-cloud class="cursor-pointer" @click="addNewIssue" />
+          <i i-carbon-close class="cursor-pointer" @click="store.ShowNewIssue=false" />
         </div>
         <div class="flex justify-start w-auto">
           <input
