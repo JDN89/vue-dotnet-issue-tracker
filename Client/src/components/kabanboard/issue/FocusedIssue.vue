@@ -15,7 +15,7 @@ const showUrgencyOptions = () => {
   urgencyOptionsHidden.value = false
 }
 const updateUrgency = (urgency: string) => {
-  store.FocusedIssue!.urgency = urgency
+  store.getFocussedIssue!.urgency = urgency
   urgencyOptionsHidden.value = true
 
   console.log(store.getFocussedIssue)
@@ -79,7 +79,7 @@ const uploadEdditedIssue = () => {
             >
           </div>
 
-          <i i-carbon-close class="cursor-pointer" @click="store.ShowNewIssue=false" />
+          <i i-carbon-close class="cursor-pointer" @click="store.ShowFocusedIssue=false" />
         </div>
 
         <div class="flex mx-auto justify-between items-center">
