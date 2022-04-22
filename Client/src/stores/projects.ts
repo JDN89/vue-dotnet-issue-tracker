@@ -477,13 +477,19 @@ export const useProjectStore = defineStore({
       // easier to convert FocusedIssue (type) to UpdateIssue(type)
       // compared to Issue(type) to (UpdateIssue)
       // PLUS if I Send all the Issue or Focussed properties to backend I send unecessary data
+
       const issueDto: UpdateIssue = issue
 
       const userStore = useUserStore()
       switch (issue.progress) {
         case 'Open':
           if (userStore.getToken) {
-            console.log(issueDto)
+            // update the issue also in the pinia store (otherwise you have to retrieve the update data also from the backend with an extra fetch request)
+            const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+            this.OpenIssues![foundIndex].description = issue.description
+            this.OpenIssues![foundIndex].title = issue.title
+            this.OpenIssues![foundIndex].urgency = issue.urgency
+            this.OpenIssues![foundIndex].type = issue.type
 
             await eventService.updateSingleOpenIssue(userStore.getToken, issueDto)
               .then((response) => {
