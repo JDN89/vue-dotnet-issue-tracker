@@ -3,7 +3,7 @@
 import { useProjectStore } from '~/stores/projects'
 const store = useProjectStore()
 const addIssue = () => {
-  console.log('load create issue component on bottom, with default input values and choice options>Finish first edit issue and then reuse the input fields')
+  store.ShowNewIssue = true
 }
 </script>
 
@@ -48,6 +48,7 @@ const addIssue = () => {
       </div>
     </div>
     <FocusedIssue v-if="store.getShowfocusedIssue" />
+    <NewIssue v-if="store.getShowNewIssue" />
   </div>
 </template>
 
