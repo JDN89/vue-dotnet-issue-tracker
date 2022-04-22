@@ -62,6 +62,8 @@ const uploadEdditedIssue = () => {
     >
       <div class="square-border bg-light-500" :class="`${urgencyStyle}`">
         <div class="flex justify-between m-3">
+          <EditButton v-if="!editButtonHidden" class="relative" @edit="editting" />
+          <i v-else i-carbon-fetch-upload-cloud @click="uploadEdditedIssue" />
           <div>
             <p
               v-if="editFieldsHidden"
@@ -76,41 +78,27 @@ const uploadEdditedIssue = () => {
               class="bg-transparent"
             >
           </div>
-          <div v-if="urgencyOptionsHidden" class="flex justify-around">
-            <Urgency
-              urgency="store.getFocussedIssue!.urgency"
-            >
-              {{ store.getFocussedIssue!.urgency.toUpperCase() }}
-            </Urgency>
-            <button
-              v-if="!editFieldsHidden"
-              i-bx-dots-vertical-rounded
-              @click="showUrgencyOptions"
-            />
-          </div>
-          <div v-else>
-            <ul class="flex flex-col">
-              <li
-                v-for="(urgency ,index) in urgencyOptions"
-                :key="index"
-                class="min-w-10 max-w-21 btn m-1 float-right"
-                @click="updateUrgency(urgency)"
-              >
-                {{ urgency }}
-              </li>
-            </ul>
-          </div>
-          <EditButton v-if="!editButtonHidden" class="relative" @edit="editting" />
-          <i v-else i-carbon-fetch-upload-cloud @click="uploadEdditedIssue" />
+
+          <i i-carbon-close class="cursor-pointer" @click="store.ShowNewIssue=false" />
         </div>
-        <div class="flex m-1 justify-between items-center">
+
+        <div class="flex mx-auto justify-between items-center">
+          <p v-if="editFieldsHidden" class="m-2">
+            {{ store.getFocussedIssue!.description }}
+          </p>
+          <textarea
+            v-else
+            v-model="store.getFocussedIssue!.description"
+            class="min-h-lg h-auto min-w-full overflow-auto bg-transparent"
+          />
+        </div>
+        <div class="flex m-1 justify-around space items-center">
           <span
             class="ml-2 text-sm text-gray-600 dark:text-gray-300"
           >{{ store.getFocussedIssue!.date }}</span>
           <div v-if="issueTypesHidden" class="flex justify-around">
             <Badge
               :type="store.getFocussedIssue!.type"
-              class="pl-2"
             >
               {{ store.getFocussedIssue!.type }}
             </Badge>
@@ -129,17 +117,33 @@ const uploadEdditedIssue = () => {
             </ul>
           </div>
 
+          <div v-if="urgencyOptionsHidden" class="flex justify-around">
+            <Urgency
+              urgency="store.getFocussedIssue!.urgency"
+            >
+              {{ store.getFocussedIssue!.urgency.toUpperCase() }}
+            </Urgency>
+
+            <button
+              v-if="!editFieldsHidden"
+              i-bx-dots-vertical-rounded
+              @click="showUrgencyOptions"
+            />
+          </div>
+          <div v-else>
+            <ul class="flex flex-col">
+              <li
+                v-for="(urgency ,index) in urgencyOptions"
+                :key="index"
+                class="min-w-10 max-w-21 btn m-1 float-right"
+                @click="updateUrgency(urgency)"
+              >
+                {{ urgency }}
+              </li>
+            </ul>
+          </div>
+
           <span />
-        </div>
-        <div class="flex mx-auto justify-between items-center">
-          <p v-if="editFieldsHidden" class="m-2">
-            {{ store.getFocussedIssue!.description }}
-          </p>
-          <textarea
-            v-else
-            v-model="store.getFocussedIssue!.description"
-            class="min-h-lg h-auto min-w-full overflow-auto bg-transparent"
-          />
         </div>
       </div>
     </div>
