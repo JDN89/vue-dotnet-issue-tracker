@@ -43,6 +43,14 @@ export interface UpdateIssue {
   description: string
 }
 
+export interface NewIssue {
+  projectId: string
+  title: string
+  urgency: string
+  type: string
+  description: string
+}
+
 export interface Project {
   projectId: string
 
