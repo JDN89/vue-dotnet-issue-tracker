@@ -15,7 +15,7 @@ const addIssue = () => {
           <h1 class="text-3xl mb-5 pr-5">
             Open
           </h1>
-          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
+          <i i-ant-design-plus-outlined class="mt-2.5 cursor-pointer" @click="addIssue" />
         </div>
         <OpenIssues />
       </div>
@@ -24,7 +24,6 @@ const addIssue = () => {
           <h1 class="text-3xl mb-5 pr-5">
             In Progress
           </h1>
-          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
         </div>
         <IssuesInProgress />
       </div>
@@ -33,7 +32,6 @@ const addIssue = () => {
           <h1 class="text-3xl mb-5 pr-5">
             In Review
           </h1>
-          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
         </div>
         <ReviewIssues />
       </div>
@@ -42,7 +40,6 @@ const addIssue = () => {
           <h1 class="text-3xl mb-5 pr-5">
             Closed
           </h1>
-          <i i-ant-design-plus-outlined class="mt-2.5" @click="addIssue" />
         </div>
         <ClosedIssues />
       </div>
