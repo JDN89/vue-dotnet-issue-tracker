@@ -40,12 +40,13 @@ const updateType = (type: string) => {
 }
 const editFieldsHidden = ref<boolean>(true)
 
-const addNewIssue = () => {
+const addNewIssue = async() => {
   editFieldsHidden.value = true
   store.ShowNewIssue = false
-  if (newIssue)
-    store.addIssue(newIssue)
-  else return console.error('no issue in focus')
+  if (newIssue.title.length === 0 || newIssue.description.length === 0)
+    alert('title and or description or missing!')
+
+  else return await store.addIssue(newIssue)
 }
 </script>
 
