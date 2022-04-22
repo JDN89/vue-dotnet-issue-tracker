@@ -1,7 +1,7 @@
 // @ts-check
 import { acceptHMRUpdate, defineStore } from 'pinia'
 import axios from 'axios'
-import type { AddProject, FocusedIssue, Issue, Project, UpdateIssue, UpdateProject } from '~/types/interfaces'
+import type { AddProject, FocusedIssue, Issue, NewIssue, Project, UpdateIssue, UpdateProject } from '~/types/interfaces'
 
 import { useUserStore } from '~/stores/users'
 import eventService from '~/composables/eventService'
@@ -14,7 +14,9 @@ interface State {
   Projects: Project[] | null
   LoadedProjectId: string| null
   FocusedIssue: FocusedIssue|null
+  NewIssue: NewIssue|undefined
   ShowFocusedIssue: boolean
+  ShowNewIssue: boolean
 
 }
 
@@ -31,6 +33,7 @@ export const useProjectStore = defineStore({
 
     Closed: null,
     FocusedIssue: null,
+    NewIssue: undefined,
 
     /*
     FocusedIssue: {
@@ -43,6 +46,7 @@ export const useProjectStore = defineStore({
       progress: 'Defult',
     }, */
     ShowFocusedIssue: false,
+    ShowNewIssue: false,
   }),
 
   actions: {
@@ -455,6 +459,15 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
+    // ===========   ADD SINGLE ISSUE  ===============
+    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
+    // =========================================
+
+    async addIssue(issue: NewIssue) {
+      console.log(issue)
+    },
+
+    // =========================================
     // ===========   UPDATE SINGLE ISSUE  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
@@ -519,7 +532,9 @@ export const useProjectStore = defineStore({
     getProjects: (state: State) => state.Projects,
     getLoadedProjectId: (state: State) => state.LoadedProjectId,
     getFocussedIssue: (state: State) => state.FocusedIssue,
+    getNewIssue: (state: State) => state.NewIssue,
     getShowfocusedIssue: (state: State) => state.ShowFocusedIssue,
+    getShowNewIssue: (state: State) => state.ShowNewIssue,
 
   },
 })
