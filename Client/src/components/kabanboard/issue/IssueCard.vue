@@ -29,7 +29,7 @@ const urgencyStyle = computed(() => {
 </script>
 
 <template>
-  <div @click="storeFocusedIssueInfo(focusedIssue)">
+  <div @click="storeFocusedIssueInfo(focusedIssue!)">
     <div class="square-border" :class="`${urgencyStyle}`">
       <div
         class=" flex justify-between m-3"
