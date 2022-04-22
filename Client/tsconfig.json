@@ -3,7 +3,10 @@
     "baseUrl": ".",
     "module": "ESNext",
     "target": "es2016",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "strict": true,
     "esModuleInterop": true,
     "incremental": false,
@@ -13,14 +16,19 @@
     "noUnusedLocals": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "preserve",
     "types": [
       "vite/client",
-      "vite-plugin-pages/client",
-    
+      "vite-plugin-pages/client"
     ],
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": [
+        "src/*"
+      ]
     }
   },
-  "exclude": ["dist", "node_modules"]
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }
