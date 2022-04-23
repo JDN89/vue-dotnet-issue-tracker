@@ -9,7 +9,7 @@ const store = useProjectStore()
 onBeforeMount(async() => {
   // onbefore mount load the first project in the array!! fetch project[0].id
   await store.fetchProjects().then(() => {
-    if (store.getProjects)
+    if (store.getProjects !== null && store.getProjects[0] !== undefined)
       store.LoadedProjectId = store.getProjects[0].projectId
   })
 
