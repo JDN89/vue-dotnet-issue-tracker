@@ -351,8 +351,9 @@ export const useProjectStore = defineStore({
 
     async updateAllOpenIssues(openIssues: Issue[]) {
       const userStore = useUserStore()
-      if (userStore.getToken) {
-        await eventService.updateAllOpenIssues(userStore.getToken, openIssues, openIssues[0].projectId)
+      if (userStore.getToken && this.getLoadedProjectId) {
+        await eventService.updateAllOpenIssues(userStore.getToken, openIssues, this.getLoadedProjectId,
+        )
           .then((response) => {
             console.log(response.status)
             if (response.status === 200) console.log('approved boy')
@@ -380,8 +381,8 @@ export const useProjectStore = defineStore({
 
     async updateAllIssuesInProgress(issues: Issue[]) {
       const userStore = useUserStore()
-      if (userStore.getToken) {
-        await eventService.updateIssuesInProgress(userStore.getToken, issues, issues[0].projectId)
+      if (userStore.getToken && this.getLoadedProjectId) {
+        await eventService.updateIssuesInProgress(userStore.getToken, issues, this.getLoadedProjectId)
           .then((response) => {
             console.log(response.status)
             if (response.status === 200) console.log('approved boy')
@@ -409,8 +410,8 @@ export const useProjectStore = defineStore({
 
     async updateAllIssuesInReview(issues: Issue[]) {
       const userStore = useUserStore()
-      if (userStore.getToken) {
-        await eventService.updateAllIssuesInReview(userStore.getToken, issues, issues[0].projectId)
+      if (userStore.getToken && this.getLoadedProjectId) {
+        await eventService.updateAllIssuesInReview(userStore.getToken, issues, this.getLoadedProjectId)
           .then((response) => {
             if (response.status === 200) console.log('approved boy')
           }).catch((error) => {
@@ -436,8 +437,8 @@ export const useProjectStore = defineStore({
 
     async updateAllClosedIssues(issues: Issue[]) {
       const userStore = useUserStore()
-      if (userStore.getToken) {
-        await eventService.updateAllClosedIssues(userStore.getToken, issues, issues[0].projectId)
+      if (userStore.getToken && this.getLoadedProjectId) {
+        await eventService.updateAllClosedIssues(userStore.getToken, issues, this.getLoadedProjectId)
           .then((response) => {
             if (response.status === 200) console.log('approved boy')
           }).catch((error) => {
