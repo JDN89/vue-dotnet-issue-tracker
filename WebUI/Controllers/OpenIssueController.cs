@@ -1,8 +1,10 @@
 using System.Reflection.Metadata;
+using Application.Core;
 using Application.DTOs;
 using Application.DTOs.Issues;
 using Application.Handlers.Issues.Commands;
 using Application.Handlers.Issues.Queries;
+using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +21,8 @@ public class OpenIssuesController : BaseController
     {
         return await Mediator.Send(new GetAllOpenIssues.Query {ProjId = projectId});
     }
+
+
 
     [HttpPut("{projectId}")]
     [Authorize]
@@ -38,5 +42,18 @@ public class OpenIssuesController : BaseController
         await Mediator.Send(new UpdateSingleOpenIssue.Command {Issue = openIssue});
 
         return Results.Ok();
+    }
+    [HttpPost]
+    [Authorize]
+    public async Task<IResult> AddNewIssue(AddNewIssueDto newIssue)
+    {
+ 
+      var issue =  await Mediator.Send(new AddNewIssue.Command {Issue = newIssue});
+            if(issue is not null)
+        return Results.Ok(issue);
+            else
+            {
+                throw new Exception("no issue returned from db");
+            }
     }
 }
