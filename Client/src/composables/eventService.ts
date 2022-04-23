@@ -1,5 +1,5 @@
 import axios from 'axios'
-import type { AddProject, Issue, LoginUserInterface, RegisterUserInterface, UpdateIssue, UpdateProject } from '../types/interfaces'
+import type { AddProject, Issue, LoginUserInterface, NewIssue, RegisterUserInterface, UpdateIssue, UpdateProject } from '../types/interfaces'
 
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
@@ -107,13 +107,21 @@ export default {
 
   // ================= SINGLE ISSUE REQUEST ===================
 
-  async updateSingleOpenIssue(token: string, openIssue: UpdateIssue) {
+  async addSingleOpenIssue(token: string, openIssue: NewIssue) {
     return await apiClient.put('OpenIssues/UpdateSingleOpenIssue', openIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
   },
+  async updateSingleOpenIssue(token: string, newIssue: UpdateIssue) {
+    return await apiClient.post('OpenIssues/AddSingleOpenIssue', newIssue, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
+
   // async retrieveSession(token: string) {
   //   return await apiClient.post('account/retrieveSession', token)
   // },
