@@ -1,14 +1,8 @@
-using System.Reflection.Metadata;
-using Application.Core;
-using Application.DTOs;
 using Application.DTOs.Issues;
 using Application.Handlers.Issues.Commands;
 using Application.Handlers.Issues.Queries;
-using Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
 namespace WebUI.Controllers;
 
 [ApiController]
@@ -19,7 +13,7 @@ public class OpenIssuesController : BaseController
     [Authorize]
     public async Task<ActionResult<List<GetOpenIssueDto>>> GetAllIssues(Guid projectId)
     {
-        return await Mediator.Send(new GetAllOpenIssues.Query {ProjId = projectId});
+        return await Mediator.Send(new GetAllOpenIssues.Query { ProjId = projectId });
     }
 
 
@@ -28,18 +22,18 @@ public class OpenIssuesController : BaseController
     [Authorize]
     public async Task<IResult> UpdateAllOpenIssues([FromBody] List<GetOpenIssueDto> openIssues, Guid projectId)
     {
-        await Mediator.Send(new DeleteAllOpenIssuesInProject.Command {ProjectId = projectId});
+        await Mediator.Send(new DeleteAllOpenIssuesInProject.Command { ProjectId = projectId });
         if (openIssues.Count <= 0) return Results.Ok();
-        await Mediator.Send(new AddOpenIssues.Command {Issues = openIssues});
+        await Mediator.Send(new AddOpenIssues.Command { Issues = openIssues });
 
         return Results.Ok();
     }
     [HttpPut]
     [Route("UpdateSingleOpenIssue")]
     [Authorize]
-    public async Task<IResult> UpdateSingleOpenIssue( UpdateIssueDto openIssue)
+    public async Task<IResult> UpdateSingleOpenIssue(UpdateIssueDto openIssue)
     {
-        await Mediator.Send(new UpdateSingleOpenIssue.Command {Issue = openIssue});
+        await Mediator.Send(new UpdateSingleOpenIssue.Command { Issue = openIssue });
 
         return Results.Ok();
     }
@@ -47,13 +41,13 @@ public class OpenIssuesController : BaseController
     [Authorize]
     public async Task<IResult> AddNewIssue(AddNewIssueDto newIssue)
     {
- 
-      var issue =  await Mediator.Send(new AddNewIssue.Command {Issue = newIssue});
-            if(issue is not null)
-        return Results.Ok(issue);
-            else
-            {
-                throw new Exception("no issue returned from db");
-            }
+
+        var issue = await Mediator.Send(new AddNewIssue.Command { Issue = newIssue });
+        if (issue is not null)
+            return Results.Ok(issue);
+        else
+        {
+            throw new Exception("no issue returned from db");
+        }
     }
 }
