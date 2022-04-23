@@ -463,8 +463,31 @@ export const useProjectStore = defineStore({
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
-    async addIssue(issue: NewIssue) {
-      console.log(issue)
+    async addIssue(newIssue: NewIssue) {
+      const userStore = useUserStore()
+      if (userStore.getToken) {
+        await eventService.addSingleOpenIssue(userStore.getToken, newIssue)
+          .then((response) => {
+            if (response.status === 200) console.log('Open Issue updated')
+          }).catch((error) => {
+            if (axios.isAxiosError(error)) {
+              if (error.response) {
+                console.log(error.response?.data)
+                console.log(error.response.status)
+                console.log(error.response.headers)
+              }
+              else if (error.request) {
+                console.log(error.request)
+              }
+              else {
+                console.log('Error', error.message)
+              }
+            }
+          })
+      }
+      else {
+        console.log('No token present')
+      }
     },
 
     // =========================================
