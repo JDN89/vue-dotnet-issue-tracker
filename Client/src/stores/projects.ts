@@ -468,7 +468,13 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.addSingleOpenIssue(userStore.getToken, newIssue)
           .then((response) => {
-            if (response.status === 200) console.log('Open Issue updated')
+            if (response.status === 200) {
+              console.log(response.data.value)
+
+              this.OpenIssues!.push(response.data.value)
+
+              console.log('Open Issue updated')
+            }
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
