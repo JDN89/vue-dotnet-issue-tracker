@@ -108,14 +108,14 @@ export default {
   // ================= SINGLE ISSUE REQUEST ===================
 
   async addSingleOpenIssue(token: string, openIssue: NewIssue) {
-    return await apiClient.put('OpenIssues/UpdateSingleOpenIssue', openIssue, {
+    return await apiClient.post('OpenIssues', openIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
   },
   async updateSingleOpenIssue(token: string, newIssue: UpdateIssue) {
-    return await apiClient.post('OpenIssues/AddSingleOpenIssue', newIssue, {
+    return await apiClient.put('OpenIssues/UpdateSingleOpenIssue', newIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
