@@ -13,13 +13,13 @@
 ##  To Do
 - fix display of date time - DONE
     > 
-- add new issue
-    - automatically fill in current date upon creation of issue
-- edit existing issue
-- delete issue
-- add new project
-- delete a project and related issues (cascade delete?)
-- load issues related to a specific project
+- add new issue - DONE
+    - automatically fill in current date upon creation of issue - DONE
+- edit existing issue 
+- delete issue - DONE
+- add new project - DONE
+- delete a project and related issues (cascade delete?) - DONE
+- load issues related to a specific project - DONE
     - upon logging in Project [0] gets loaded - DONE
 - remove token automatically when it expires
 - display errors in a nice format
