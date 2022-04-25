@@ -128,6 +128,14 @@ export default {
       },
     })
   },
+
+  async deleteIssueInReview(token: string, id: string) {
+    return await apiClient.delete(`issuesInReview/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
   async updateSingleOpenIssue(token: string, newIssue: UpdateIssue) {
     return await apiClient.put('OpenIssues/UpdateSingleOpenIssue', newIssue, {
       headers: {

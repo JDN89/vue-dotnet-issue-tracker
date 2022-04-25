@@ -261,78 +261,6 @@ export const useProjectStore = defineStore({
       }
     },
 
-    // =========================================
-    // ===========   DELETE ISSUE  ===============
-    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
-    // =========================================
-
-    async deleteIssue(issue: FocusedIssue) {
-      const userStore = useUserStore()
-
-      // ===========   DELETE OPEN ISSUE  ===============
-      switch (issue.progress) {
-        case 'Open':
-
-          if (userStore.getToken) {
-            await eventService.deleteOpenIssue(userStore.getToken, issue.id)
-              .then((response) => {
-                if (response.status === 200)
-                  this.OpenIssues = this.OpenIssues!.filter(i => i.id !== issue.id)
-
-              }).catch((error) => {
-                if (axios.isAxiosError(error)) {
-                  if (error.response) {
-                    console.log(error.response?.data)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                  }
-                  else if (error.request) {
-                    console.log(error.request)
-                  }
-                  else {
-                    console.log('Error', error.message)
-                  }
-                }
-              })
-          }
-          break
-
-        // ===========   DELETE INPROGRESS ISSUE  ===============
-        case 'InProgress':
-          console.log('send id to /IssuesInProgress/{issueId}')
-
-          if (userStore.getToken) {
-            await eventService.deleteInprogressIssue(userStore.getToken, issue.id)
-              .then((response) => {
-                if (response.status === 200)
-                  this.InProgress = this.InProgress!.filter(i => i.id !== issue.id)
-
-              }).catch((error) => {
-                if (axios.isAxiosError(error)) {
-                  if (error.response) {
-                    console.log(error.response?.data)
-                    console.log(error.response.status)
-                    console.log(error.response.headers)
-                  }
-                  else if (error.request) {
-                    console.log(error.request)
-                  }
-                  else {
-                    console.log('Error', error.message)
-                  }
-                }
-              })
-          }
-          break
-        case 'InReview':
-          console.log('send id to /issuesInReview/{issueId}')
-          break
-        case 'Closed':
-          console.log('send to /closed')
-          break
-      }
-      console.log(issue)
-    },
 
     // =========================================
     // ===========   FETCH ISSUES TO BE TESTED   ===============
@@ -545,6 +473,99 @@ export const useProjectStore = defineStore({
       }
     },
 
+    // =========================================
+    // ===========   DELETE ISSUE  ===============
+    // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
+    // =========================================
+
+    async deleteIssue(issue: FocusedIssue) {
+      const userStore = useUserStore()
+
+      // ===========   DELETE OPEN ISSUE  ===============
+      switch (issue.progress) {
+        case 'Open':
+
+          if (userStore.getToken) {
+            await eventService.deleteOpenIssue(userStore.getToken, issue.id)
+              .then((response) => {
+                if (response.status === 200)
+                  this.OpenIssues = this.OpenIssues!.filter(i => i.id !== issue.id)
+
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
+          break
+
+        // ===========   DELETE INPROGRESS ISSUE  ===============
+        case 'InProgress':
+
+          if (userStore.getToken) {
+            await eventService.deleteInprogressIssue(userStore.getToken, issue.id)
+              .then((response) => {
+                if (response.status === 200)
+                  this.InProgress = this.InProgress!.filter(i => i.id !== issue.id)
+
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
+          break
+        case 'InReview':
+          if (userStore.getToken) {
+            await eventService.deleteIssueInReview(userStore.getToken, issue.id)
+              .then((response) => {
+                if (response.status === 200)
+                  this.Review = this.Review!.filter(i => i.id !== issue.id)
+
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
+
+          break
+        case 'Closed':
+          console.log('send to /closed')
+          break
+      }
+      console.log(issue)
+    },
     // =========================================
     // ===========   UPDATE SINGLE ISSUE  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
