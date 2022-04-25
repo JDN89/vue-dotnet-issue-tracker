@@ -121,6 +121,13 @@ export default {
       },
     })
   },
+  async deleteInprogressIssue(token: string, id: string) {
+    return await apiClient.delete(`issuesInProgress/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
   async updateSingleOpenIssue(token: string, newIssue: UpdateIssue) {
     return await apiClient.put('OpenIssues/UpdateSingleOpenIssue', newIssue, {
       headers: {

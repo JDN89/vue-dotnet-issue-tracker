@@ -295,12 +295,34 @@ export const useProjectStore = defineStore({
                 }
               })
           }
-          console.log('send id to /openIssue/{issueId}')
-
           break
+
+        // ===========   DELETE INPROGRESS ISSUE  ===============
         case 'InProgress':
           console.log('send id to /IssuesInProgress/{issueId}')
 
+          if (userStore.getToken) {
+            await eventService.deleteInprogressIssue(userStore.getToken, issue.id)
+              .then((response) => {
+                if (response.status === 200)
+                  this.InProgress = this.InProgress!.filter(i => i.id !== issue.id)
+
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           break
         case 'InReview':
           console.log('send id to /issuesInReview/{issueId}')
