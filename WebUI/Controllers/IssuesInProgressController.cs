@@ -19,25 +19,25 @@ public class IssuesInProgressController : BaseController
 
     [HttpPut("{projectId}")]
     [Authorize]
-    public async Task<IResult> UpdateAllIssuesInProgress([FromBody] List<GetIssueInProgressDto> inProgressIssues, Guid projectId)
+    public async Task<IActionResult> UpdateAllIssuesInProgress([FromBody] List<GetIssueInProgressDto> inProgressIssues, Guid projectId)
     {
 
         await Mediator.Send(new DeleteIssuesInProgress.Command { ProjectId = projectId });
-        if (inProgressIssues.Count <= 0) return Results.Ok();
+        if (inProgressIssues.Count <= 0) return NoContent();
         await Mediator.Send(new AddIssuesInProgress.Command { Issues = inProgressIssues });
 
-        return Results.Ok();
+        return NoContent();
     }
 
     [HttpDelete("{id}")]
     [Authorize]
-    public async Task<IResult> DeleteOpenIssue(Guid id)
+    public async Task<IActionResult> DeleteOpenIssue(Guid id)
     {
-        await Mediator.Send(new DeleteIssueInProgress.Command
+        await Mediator.Send(new DeleteClosedIssue.Command
         {
             Id = id
         });
-        return Results.Ok();
+        return NoContent();
 
     }
 }

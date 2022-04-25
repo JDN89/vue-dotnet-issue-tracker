@@ -8,22 +8,34 @@ namespace WebUI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ClosedIssuesController:BaseController
+public class ClosedIssuesController : BaseController
 {
-     [HttpGet("{projectId}")]
-        [Authorize]
-        public async Task<ActionResult<List<GetClosedIssueDto>>> GetAllIssues(Guid projectId)
-        {
-            return await Mediator.Send(new GetAllClosedIssues.Query{ProjId = projectId});
-        }
-  [HttpPut("{projectId}")]
+    [HttpGet("{projectId}")]
+    [Authorize]
+    public async Task<ActionResult<List<GetClosedIssueDto>>> GetAllIssues(Guid projectId)
+    {
+        return await Mediator.Send(new GetAllClosedIssues.Query { ProjId = projectId });
+    }
+    [HttpPut("{projectId}")]
     [Authorize]
     public async Task<IResult> UpdateAllClosedIssues([FromBody] List<GetClosedIssueDto> closedIssues, Guid projectId)
     {
-        await Mediator.Send(new DeleteClosedIssues.Command {ProjectId = projectId});
+        await Mediator.Send(new DeleteClosedIssues.Command { ProjectId = projectId });
         if (closedIssues.Count <= 0) return Results.Ok();
-        await Mediator.Send(new AddClosedIssues.Command {Issues = closedIssues});
+        await Mediator.Send(new AddClosedIssues.Command { Issues = closedIssues });
 
         return Results.Ok();
+    }
+
+    [HttpDelete("{id}")]
+    [Authorize]
+    public async Task<IResult> DeleteOpenIssue(Guid id)
+    {
+        await Mediator.Send(new DeleteIssueInProgress.Command
+        {
+            Id = id
+        });
+        return Results.Ok();
+
     }
 }
