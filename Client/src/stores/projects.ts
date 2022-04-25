@@ -63,7 +63,6 @@ export const useProjectStore = defineStore({
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
-                console.log(error.response?.data)
                 console.log(error.response.status)
                 console.log(error.response.headers)
               }
@@ -95,7 +94,6 @@ export const useProjectStore = defineStore({
         await this.fetchIssuesInProgress(projectId)
         await this.fetchClosedIssues(projectId)
       }
-      console.log(projectId)
     },
 
     // =========================================
@@ -563,7 +561,6 @@ export const useProjectStore = defineStore({
           break
         // ===========   DELETE CLOSED ISSUE  ===============
         case 'Closed':
-          console.log('send to /closed')
           if (userStore.getToken) {
             await eventService.deleteClosedIssue(userStore.getToken, issue.id)
               .then((response) => {
@@ -588,7 +585,6 @@ export const useProjectStore = defineStore({
           }
           break
       }
-      console.log(issue)
     },
     // =========================================
     // ===========   UPDATE SINGLE ISSUE  ===============
@@ -633,8 +629,6 @@ export const useProjectStore = defineStore({
                 }
               })
           }
-          console.log('send id to /openIssue/{issueId}')
-          console.log(issue.description)
 
           break
         case 'InProgress':
@@ -648,7 +642,6 @@ export const useProjectStore = defineStore({
           console.log('send to /closed')
           break
       }
-      console.log(issue)
     },
 
   },
