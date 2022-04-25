@@ -1,3 +1,4 @@
+
 using AutoMapper;
 using Infrastructure.Persistence;
 using MediatR;
@@ -5,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Handlers.Issues.Commands;
 
-public class DeleteAllOpenIssuesInProject
+public class DeleteOpenIssue
 {
     public class Command : IRequest
     {
-        public Guid ProjectId { get; set; }
+        public Guid Id { get; set; }
     }
 
     public class Handler : AsyncRequestHandler<Command>
@@ -23,14 +24,12 @@ public class DeleteAllOpenIssuesInProject
 
         protected override async Task Handle(Command command, CancellationToken cancellationToken)
         {
-            var replaceOPenIssues = await _context.OpenIssues.Where(o => o.ProjectId == command.ProjectId)
-                .ToListAsync(cancellationToken);
-            if (replaceOPenIssues.Count <= 0) return;
 
-            foreach (var issue in replaceOPenIssues)
-            {
-                _context.Remove(issue);
-            }
+            var issue = await _context.OpenIssues.FirstOrDefaultAsync( o => o.Id == command.Id, cancellationToken);
+            if (issue is null) return;
+
+            _context.Remove(issue);
+
 
 
             var success = await _context.SaveChangesAsync(cancellationToken) > 0;

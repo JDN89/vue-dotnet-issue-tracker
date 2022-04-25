@@ -262,25 +262,23 @@ export const useProjectStore = defineStore({
     },
 
     // =========================================
-    // ===========   DELTE ISSUES  ===============
+    // ===========   DELETE ISSUE  ===============
     // only udpate don,t refresh list, state persists in Pinia while on page and gets loaded from db upon mount
     // =========================================
 
     async deleteIssue(issue: FocusedIssue) {
       const userStore = useUserStore()
 
-      // ===========   DELTE OPEN ISSUE  ===============
+      // ===========   DELETE OPEN ISSUE  ===============
       switch (issue.progress) {
         case 'Open':
 
           if (userStore.getToken) {
             await eventService.deleteOpenIssue(userStore.getToken, issue.id)
               .then((response) => {
-                if (response.status === 200) {
-                  console.log('status 200')
+                if (response.status === 200)
                   this.OpenIssues = this.OpenIssues!.filter(i => i.id !== issue.id)
-                }
-                this.Review = response.data
+
               }).catch((error) => {
                 if (axios.isAxiosError(error)) {
                   if (error.response) {
