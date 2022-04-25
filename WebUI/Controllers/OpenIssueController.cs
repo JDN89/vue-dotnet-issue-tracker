@@ -20,22 +20,22 @@ public class OpenIssuesController : BaseController
 
     [HttpPut("{projectId}")]
     [Authorize]
-    public async Task<IResult> UpdateAllOpenIssues([FromBody] List<GetOpenIssueDto> openIssues, Guid projectId)
+    public async Task<IActionResult> UpdateAllOpenIssues([FromBody] List<GetOpenIssueDto> openIssues, Guid projectId)
     {
         await Mediator.Send(new DeleteAllOpenIssuesInProject.Command { ProjectId = projectId });
-        if (openIssues.Count <= 0) return Results.Ok();
+        if (openIssues.Count <= 0) return NoContent();
         await Mediator.Send(new AddOpenIssues.Command { Issues = openIssues });
 
-        return Results.Ok();
+        return NoContent();
     }
     [HttpPut]
     [Route("UpdateSingleOpenIssue")]
     [Authorize]
-    public async Task<IResult> UpdateSingleOpenIssue(UpdateIssueDto openIssue)
+    public async Task<IActionResult> UpdateSingleOpenIssue(UpdateIssueDto openIssue)
     {
         await Mediator.Send(new UpdateSingleOpenIssue.Command { Issue = openIssue });
 
-        return Results.Ok();
+        return NoContent();
     }
     [HttpPost]
     [Authorize]
@@ -50,4 +50,10 @@ public class OpenIssuesController : BaseController
             throw new Exception("no issue returned from db");
         }
     }
+    [HttpDelete("{id}")]
+    [Authorize]
+    public async Task<IResult> DeleteOpenIssue(guid id)
+      await Mediator.Send(new DeleteIssue.Command {Id = id
+})
+      return Results.ok();
 }

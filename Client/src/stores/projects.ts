@@ -277,6 +277,7 @@ export const useProjectStore = defineStore({
             await eventService.deleteOpenIssue(userStore.getToken, issue.id)
               .then((response) => {
                 if (response.status === 200) {
+                  console.log('status 200')
                   this.OpenIssues = this.OpenIssues!.filter(i => i.id !== issue.id)
                 }
                 this.Review = response.data
