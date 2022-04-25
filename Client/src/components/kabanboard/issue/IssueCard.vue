@@ -5,7 +5,7 @@ import type { FocusedIssue } from '~/types/interfaces'
 
 const store = useProjectStore()
 const props = defineProps<{ id: string; title: string; urgency: string; date: string; type: string; description: string; progress: string }>()
-const focusedIssue: FocusedIssue|null = reactive({
+const focusedIssue: FocusedIssue | null = reactive({
   id: props.id,
   title: props.title,
   progress: props.progress,
@@ -15,9 +15,8 @@ const focusedIssue: FocusedIssue|null = reactive({
   urgency: props.urgency,
 })
 
-const storeFocusedIssueInfo = async(issue: FocusedIssue) => {
+const storeFocusedIssueInfo = async () => {
   store.FocusedIssue = focusedIssue
-  console.log(focusedIssue)
 
   store.ShowFocusedIssue = true
 }
@@ -29,11 +28,9 @@ const urgencyStyle = computed(() => {
 </script>
 
 <template>
-  <div @click="storeFocusedIssueInfo(focusedIssue!)">
+  <div @click="storeFocusedIssueInfo()">
     <div class="square-border" :class="`${urgencyStyle}`">
-      <div
-        class=" flex justify-between m-3"
-      >
+      <div class=" flex justify-between m-3">
         <p class="font-semibold font-sans tracking-wide text-sm">
           {{ props.title }}
         </p>
