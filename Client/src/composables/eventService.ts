@@ -115,7 +115,7 @@ export default {
     })
   },
   async deleteOpenIssue(token: string, id: string) {
-    return await apiClient.delete('OpenIssues/${id}', {
+    return await apiClient.delete(`OpenIssues/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -12,9 +12,9 @@ interface State {
   Review: Issue[] | null
   Closed: Issue[] | null
   Projects: Project[] | null
-  LoadedProjectId: string| null
-  FocusedIssue: FocusedIssue|null
-  NewIssue: NewIssue|undefined
+  LoadedProjectId: string | null
+  FocusedIssue: FocusedIssue | null
+  NewIssue: NewIssue | undefined
   ShowFocusedIssue: boolean
   ShowNewIssue: boolean
 
@@ -267,8 +267,35 @@ export const useProjectStore = defineStore({
     // =========================================
 
     async deleteIssue(issue: FocusedIssue) {
+      const userStore = useUserStore()
+
+      // ===========   DELTE OPEN ISSUE  ===============
       switch (issue.progress) {
         case 'Open':
+
+          if (userStore.getToken) {
+            await eventService.deleteOpenIssue(userStore.getToken, issue.id)
+              .then((response) => {
+                if (response.status === 200) {
+                  this.OpenIssues = this.OpenIssues!.filter(i => i.id !== issue.id)
+                }
+                this.Review = response.data
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           console.log('send id to /openIssue/{issueId}')
 
           break
