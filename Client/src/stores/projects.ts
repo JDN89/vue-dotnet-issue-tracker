@@ -535,6 +535,7 @@ export const useProjectStore = defineStore({
               })
           }
           break
+        // ===========   DELETE INREVIEW ISSUE  ===============
         case 'InReview':
           if (userStore.getToken) {
             await eventService.deleteIssueInReview(userStore.getToken, issue.id)
@@ -560,8 +561,31 @@ export const useProjectStore = defineStore({
           }
 
           break
+        // ===========   DELETE CLOSED ISSUE  ===============
         case 'Closed':
           console.log('send to /closed')
+          if (userStore.getToken) {
+            await eventService.deleteClosedIssue(userStore.getToken, issue.id)
+              .then((response) => {
+                if (response.status === 200)
+                  this.Closed = this.Closed!.filter(i => i.id !== issue.id)
+
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           break
       }
       console.log(issue)
