@@ -1,7 +1,6 @@
 # issue-tracker
-- Project I made to practice DDD and thin Controllers using MediatR with ASP.NET MVC
+- Project I made to practice Clean Architecture (Robert C. Martin ) and thin Controllers using MediatR with ASP.NET MVC
 - Fronted is made with the vue composition API and script setup
-- I tried to incorporate some form of Domain Driven Design into this project
 
 <br/>
 
