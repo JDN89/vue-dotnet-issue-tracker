@@ -4,7 +4,7 @@
 
 <br/>
 
-> I'm a self thaught developer and I only started coding late 2019 (in my free time), so my application of DDD might be faulty 
+> I'm a self thaught developer and I only started coding late 2019 (in my free time), so my implementeatin of Clean Architecture might be faulty 
 
 ## Work in progress
 - You can allready use the project and improve upon what I have created so far
