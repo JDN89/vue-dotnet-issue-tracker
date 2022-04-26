@@ -43,8 +43,8 @@ export default defineConfig({
         ['icon-btn', 'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
         ['field', 'border rounded-2xl hover:border-2 dark:border-1 dark:border-gray-400 dark:hover:border-light-100 hover:bg-blue-gray-100 dark:bg-dark-200 dark:hover:bg-gray-600 mx-auto min-w-xs my-2 pl-3 text-left overflow-hidden'],
         ['hover', 'cursor-pointer transform transition ease-in-out duration-200 duration-500  select-none sm:hover:scale-109 xl:hover:scale-110'],
-        ['rounded-border', 'border rounded-2xl hover:border-2 dark:border-1 dark:border-gray-400 dark:hover:border-light-100'],
-        ['square-border', 'border rounded-md hover:border-2 dark:border-1 dark:border-gray-400 dark:hover:border-light-100'],
+        ['rounded-border', 'border rounded-2xl hover:border-2 dark:border-1 dark:border-gray-400 dark:hover:border-gray-300'],
+        ['square-border', 'border rounded-md dark:hover:border-teal-300 hover:border-teal-600 dark:border-1 dark:border-gray-400'],
         ['ghost', 'bg-teal-400'],
       ],
       presets: [
