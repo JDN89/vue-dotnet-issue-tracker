@@ -1,3 +1,4 @@
+
 using Application.DTOs.Issues;
 using AutoMapper;
 using Infrastructure.Persistence;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Handlers.Issues.Commands;
 
-public class UpdateSingleOpenIssue
+public class UpdateSingleIssueInProgress
 {
     public class Command : IRequest<Unit>
     {
@@ -27,10 +28,10 @@ public class UpdateSingleOpenIssue
 
         public async Task<Unit> Handle(Command command, CancellationToken cancellationToken)
         {
-            var issue = await _context.OpenIssues.FirstOrDefaultAsync(o => o.Id == command.Issue.Id, cancellationToken);
+            var issue = await _context.InProgressIssues.FirstOrDefaultAsync(o => o.Id == command.Issue.Id, cancellationToken);
             if (issue is null)
             {
-                throw new Exception("open issue not found in db");
+                throw new Exception("Issue in progress not found in db");
             }
             else
             {
@@ -45,7 +46,7 @@ public class UpdateSingleOpenIssue
 
             if (success) return Unit.Value;
 
-            throw new Exception("failed to update the open Issue");
+            throw new Exception("failed to update the Issue In Progress");
         }
     }
 }

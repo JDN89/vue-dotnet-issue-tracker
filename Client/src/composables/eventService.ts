@@ -152,21 +152,21 @@ export default {
   },
 
   async updateSingleIssueInProgress(token: string, newIssue: UpdateIssue) {
-    return await apiClient.put('issuesInProgress/UpdateSingleOpenIssue', newIssue, {
+    return await apiClient.put('issuesInProgress/UpdateSingleIssueInProgress', newIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
   },
   async updateSingleIssueInReview(token: string, newIssue: UpdateIssue) {
-    return await apiClient.put('issuesInReview/UpdateSingleOpenIssue', newIssue, {
+    return await apiClient.put('issuesInReview/UpdateSingleIssueInReview', newIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
   },
   async updateSingleClosedIssue(token: string, newIssue: UpdateIssue) {
-    return await apiClient.put('ClosedIssues/UpdateSingleOpenIssue', newIssue, {
+    return await apiClient.put('ClosedIssues/UpdateSingleClosedIssue', newIssue, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

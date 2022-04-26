@@ -29,6 +29,15 @@ public class IssuesInProgressController : BaseController
         return NoContent();
     }
 
+    [HttpPut]
+    [Route("UpdateSingleIssueInProgress")]
+    [Authorize]
+    public async Task<IActionResult> UpdateSingleIssueInProgress(UpdateIssueDto openIssue)
+    {
+        await Mediator.Send(new UpdateSingleIssueInProgress.Command { Issue = openIssue });
+
+        return NoContent();
+    }
     [HttpDelete("{id}")]
     [Authorize]
     public async Task<IActionResult> DeleteOpenIssue(Guid id)
