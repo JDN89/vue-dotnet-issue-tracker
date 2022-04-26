@@ -52,13 +52,13 @@ public class OpenIssuesController : BaseController
     }
     [HttpDelete("{id}")]
     [Authorize]
-    public async Task<IResult> DeleteOpenIssue(Guid id)
+    public async Task<IActionResult> DeleteOpenIssue(Guid id)
     {
         await Mediator.Send(new DeleteOpenIssue.Command
         {
             Id = id
         });
-        return Results.Ok();
+        return NoContent();
 
     }
 }

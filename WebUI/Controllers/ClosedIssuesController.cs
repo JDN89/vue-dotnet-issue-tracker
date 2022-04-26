@@ -29,13 +29,12 @@ public class ClosedIssuesController : BaseController
 
     [HttpDelete("{id}")]
     [Authorize]
-    public async Task<IResult> DeleteOpenIssue(Guid id)
+    public async Task<IActionResult> DeleteOpenIssue(Guid id)
     {
         await Mediator.Send(new DeleteIssueInProgress.Command
         {
             Id = id
         });
-        return Results.Ok();
-
+        return NoContent();
     }
 }

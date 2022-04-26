@@ -41,13 +41,13 @@ public class IssuesInReviewController : BaseController
 
     [HttpDelete("{id}")]
     [Authorize]
-    public async Task<IResult> DeleteIssueInReview(Guid id)
+    public async Task<IActionResult> DeleteIssueInReview(Guid id)
     {
         await Mediator.Send(new DeleteIssueInReview.Command
         {
             Id = id
         });
-        return Results.Ok();
+        return NoContent();
 
     }
 }
