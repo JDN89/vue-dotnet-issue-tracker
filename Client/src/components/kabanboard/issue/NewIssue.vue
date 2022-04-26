@@ -53,7 +53,7 @@ const addNewIssue = async () => {
 <template>
   <div class="flex bg-gray-700 bg-opacity-50 fixed left-0 right-0 bottom-0 top-0 items-center">
     <div class=" min-w-lg h-auto m-1 p-2 sm:max-w-70 content-center sm:mx-auto mx-auto">
-      <div class="square-border flex-col  h-auto w-auto bg-light-500" :class="`${urgencyStyle}`">
+      <div class="square-border flex-col bg-light-500 dark:bg-dark-500 h-auto w-auto " :class="`${urgencyStyle}`">
         <div class="flex h-auto justify-between m-3">
           <i i-carbon-fetch-upload-cloud class="cursor-pointer" @click="addNewIssue" />
           <div v-if="urgencyOptionsHidden" class="flex cursor-pointer justify-around">
