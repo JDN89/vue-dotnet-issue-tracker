@@ -1,15 +1,15 @@
 # issue-tracker
 - Project I made to practice Clean Architecture (Robert C. Martin ) and thin Controllers using MediatR with ASP.NET MVC
-- Fronted is made with the vue composition API and script setup
+- Fronted is made with the Vue composition API and script setup
 
 <br/>
 
-> I'm a self thaught developer and I only started coding late 2019 (in my free time), so my implementeatin of Clean Architecture might be faulty 
+> I'm a self taught developer and I only started coding late 2019 (in my free time), so my implementation of Clean Architecture might be faulty 
 
 ## Work in progress
-- You can allready use the project and improve upon what I have created so far
-   - the Fronted is created and can communicate with the backend
-   - state and position of the issues get saved upon drag and upon logging in
+- You can already use the project and improve upon what I have created so far
+   - the Fronted is created and can communicate with the back-end
+   - state and position of the issues gets saved when you drag  an issue to another column and when you leave the project page
 ##  To Do
 - fix display of date time - DONE
     > 
@@ -25,15 +25,16 @@
 - display errors in a nice format
     - display Axios errors (if necessary)
  - EF core inserts issues in random order, making drag and drop feature of kabanboard less usefull. 
-   - find solution to save issues via EF core in the order they're send in to the backend.
+   - find solution to save issues via EF core in the order they're send in to the back-end.
 
 ## Ideas
  - Add possibility to share your project / issue with another user.
     - share button > fill in user email > if email exists in DB > user gets invitation > upon accepting > project / issues gets pushed to his DB
     - When you share an issue, the other user  can write comments in the description (link a different font color to the other user)
-    - add posibility to add  other users to the project, when you initially create the project
+    - add possibility to add  other users to the project, when you initially create the project
  - Link issues to github commits
  - Add possibility to add Screenshots to your issue Description
+ - Make a mobile version or make mobile friendly
  - ...
 
 
