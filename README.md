@@ -15,7 +15,7 @@
     > 
 - add new issue - DONE
     - automatically fill in current date upon creation of issue - DONE
-- edit existing issue 
+- edit existing issue - DONE
 - delete issue - DONE
 - add new project - DONE
 - delete a project and related issues (cascade delete?) - DONE
