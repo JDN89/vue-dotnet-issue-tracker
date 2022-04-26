@@ -640,7 +640,7 @@ export const useProjectStore = defineStore({
               .then((response) => {
                 if (response.status === 204) {
 
-                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  const foundIndex = this.InProgress!.findIndex(x => x.id === issue.id)
                   this.InProgress![foundIndex].description = issue.description
                   this.InProgress![foundIndex].title = issue.title
                   this.InProgress![foundIndex].urgency = issue.urgency
@@ -670,7 +670,7 @@ export const useProjectStore = defineStore({
               .then((response) => {
                 if (response.status === 204) {
 
-                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  const foundIndex = this.Review!.findIndex(x => x.id === issue.id)
                   this.Review![foundIndex].description = issue.description
                   this.Review![foundIndex].title = issue.title
                   this.Review![foundIndex].urgency = issue.urgency
@@ -699,7 +699,7 @@ export const useProjectStore = defineStore({
               .then((response) => {
                 if (response.status === 204) {
 
-                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  const foundIndex = this.Closed!.findIndex(x => x.id === issue.id)
                   this.Closed![foundIndex].description = issue.description
                   this.Closed![foundIndex].title = issue.title
                   this.Closed![foundIndex].urgency = issue.urgency
