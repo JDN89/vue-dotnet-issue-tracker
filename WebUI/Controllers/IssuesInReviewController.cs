@@ -29,6 +29,16 @@ public class IssuesInReviewController : BaseController
     }
 
 
+    [HttpPut]
+    [Route("UpdateSingleIssueInReview")]
+    [Authorize]
+    public async Task<IActionResult> UpdateSingleIssueInReview(UpdateIssueDto issueInReview)
+    {
+        await Mediator.Send(new UpdateSingleIssueInReview.Command { Issue = issueInReview });
+
+        return NoContent();
+    }
+
     [HttpDelete("{id}")]
     [Authorize]
     public async Task<IResult> DeleteIssueInReview(Guid id)

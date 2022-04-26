@@ -32,9 +32,9 @@ public class IssuesInProgressController : BaseController
     [HttpPut]
     [Route("UpdateSingleIssueInProgress")]
     [Authorize]
-    public async Task<IActionResult> UpdateSingleIssueInProgress(UpdateIssueDto openIssue)
+    public async Task<IActionResult> UpdateSingleIssueInProgress(UpdateIssueDto issue)
     {
-        await Mediator.Send(new UpdateSingleIssueInProgress.Command { Issue = openIssue });
+        await Mediator.Send(new UpdateSingleIssueInProgress.Command { Issue = issue });
 
         return NoContent();
     }
