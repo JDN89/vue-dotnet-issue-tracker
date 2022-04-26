@@ -151,6 +151,27 @@ export default {
     })
   },
 
+  async updateSingleIssueInProgress(token: string, newIssue: UpdateIssue) {
+    return await apiClient.put('issuesInProgress/UpdateSingleOpenIssue', newIssue, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
+  async updateSingleIssueInReview(token: string, newIssue: UpdateIssue) {
+    return await apiClient.put('issuesInReview/UpdateSingleOpenIssue', newIssue, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
+  async updateSingleClosedIssue(token: string, newIssue: UpdateIssue) {
+    return await apiClient.put('ClosedIssues/UpdateSingleOpenIssue', newIssue, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  },
   // async retrieveSession(token: string) {
   //   return await apiClient.post('account/retrieveSession', token)
   // },
