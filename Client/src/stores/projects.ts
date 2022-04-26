@@ -179,10 +179,7 @@ export const useProjectStore = defineStore({
       const userStore = useUserStore()
       if (userStore.getToken && project) {
         await eventService.updateProject(userStore.getToken, project)
-          .then((response) => {
-            if (response.status === 200)
-              console.log(response.status)
-          }).catch((error) => {
+          .catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
                 console.log(error.response?.data)
@@ -210,7 +207,8 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.getAllOpenIssues(userStore.getToken, projectId)
           .then((response) => {
-            this.OpenIssues = response.data
+            if (response.status === 200)
+              this.OpenIssues = response.data
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -240,7 +238,8 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.getAllIssuesInProgress(userStore.getToken, projectId)
           .then((response) => {
-            this.InProgress = response.data
+            if (response.status === 200)
+              this.InProgress = response.data
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -270,7 +269,8 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.getAllReviewIssues(userStore.getToken, projectId)
           .then((response) => {
-            this.Review = response.data
+            if (response.status === 200)
+              this.Review = response.data
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -299,7 +299,8 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.getAllClosedIssues(userStore.getToken, projectId)
           .then((response) => {
-            this.Closed = response.data
+            if (response.status === 200)
+              this.Closed = response.data
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -330,7 +331,7 @@ export const useProjectStore = defineStore({
         )
           .then((response) => {
             console.log(response.status)
-            if (response.status === 200) console.log('approved boy')
+            if (response.status === 204) console.log('approved boy')
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -359,7 +360,7 @@ export const useProjectStore = defineStore({
         await eventService.updateIssuesInProgress(userStore.getToken, issues, this.getLoadedProjectId)
           .then((response) => {
             console.log(response.status)
-            if (response.status === 200) console.log('approved boy')
+            if (response.status === 204) console.log('approved boy')
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -386,9 +387,7 @@ export const useProjectStore = defineStore({
       const userStore = useUserStore()
       if (userStore.getToken && this.getLoadedProjectId) {
         await eventService.updateAllIssuesInReview(userStore.getToken, issues, this.getLoadedProjectId)
-          .then((response) => {
-            if (response.status === 200) console.log('approved boy')
-          }).catch((error) => {
+          .catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
                 console.log(error.response?.data)
@@ -414,7 +413,7 @@ export const useProjectStore = defineStore({
       if (userStore.getToken && this.getLoadedProjectId) {
         await eventService.updateAllClosedIssues(userStore.getToken, issues, this.getLoadedProjectId)
           .then((response) => {
-            if (response.status === 200) console.log('approved boy')
+            if (response.status === 204) console.log('approved boy')
           }).catch((error) => {
             if (axios.isAxiosError(error)) {
               if (error.response) {
@@ -443,7 +442,7 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.addSingleOpenIssue(userStore.getToken, newIssue)
           .then((response) => {
-            if (response.status === 200) {
+            if (response.status === 204) {
               console.log(response.data.value)
 
               this.OpenIssues!.push(response.data.value)
@@ -486,7 +485,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.deleteOpenIssue(userStore.getToken, issue.id)
               .then((response) => {
-                if (response.status === 200)
+                if (response.status === 204)
                   this.OpenIssues = this.OpenIssues!.filter(i => i.id !== issue.id)
 
               }).catch((error) => {
@@ -513,7 +512,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.deleteInprogressIssue(userStore.getToken, issue.id)
               .then((response) => {
-                if (response.status === 200)
+                if (response.status === 204)
                   this.InProgress = this.InProgress!.filter(i => i.id !== issue.id)
 
               }).catch((error) => {
@@ -538,7 +537,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.deleteIssueInReview(userStore.getToken, issue.id)
               .then((response) => {
-                if (response.status === 200)
+                if (response.status === 204)
                   this.Review = this.Review!.filter(i => i.id !== issue.id)
 
               }).catch((error) => {
@@ -564,7 +563,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.deleteClosedIssue(userStore.getToken, issue.id)
               .then((response) => {
-                if (response.status === 200)
+                if (response.status === 204)
                   this.Closed = this.Closed!.filter(i => i.id !== issue.id)
 
               }).catch((error) => {
@@ -606,7 +605,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.updateSingleOpenIssue(userStore.getToken, issueDto)
               .then((response) => {
-                if (response.status === 200) {
+                if (response.status === 204) {
 
                   // update the issue also in the pinia store (otherwise you have to retrieve the update data also from the backend with an extra fetch request)
                   const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
@@ -639,7 +638,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.updateSingleIssueInProgress(userStore.getToken, issueDto)
               .then((response) => {
-                if (response.status === 200) {
+                if (response.status === 204) {
 
                   const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
                   this.InProgress![foundIndex].description = issue.description
@@ -669,7 +668,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.updateSingleIssueInReview(userStore.getToken, issueDto)
               .then((response) => {
-                if (response.status === 200) {
+                if (response.status === 204) {
 
                   const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
                   this.Review![foundIndex].description = issue.description
@@ -698,7 +697,7 @@ export const useProjectStore = defineStore({
           if (userStore.getToken) {
             await eventService.updateSingleClosedIssue(userStore.getToken, issueDto)
               .then((response) => {
-                if (response.status === 200) {
+                if (response.status === 204) {
 
                   const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
                   this.Closed![foundIndex].description = issue.description
