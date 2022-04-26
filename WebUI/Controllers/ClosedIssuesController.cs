@@ -27,6 +27,15 @@ public class ClosedIssuesController : BaseController
         return Results.Ok();
     }
 
+    [HttpPut]
+    [Route("UpdateSingleClosedIssue")]
+    [Authorize]
+    public async Task<IActionResult> UpdateSingleClosedIssue(UpdateIssueDto openIssue)
+    {
+        await Mediator.Send(new UpdateSingleClosedIssue.Command { Issue = openIssue });
+
+        return NoContent();
+    }
     [HttpDelete("{id}")]
     [Authorize]
     public async Task<IActionResult> DeleteOpenIssue(Guid id)

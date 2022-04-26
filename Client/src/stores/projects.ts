@@ -442,7 +442,7 @@ export const useProjectStore = defineStore({
       if (userStore.getToken) {
         await eventService.addSingleOpenIssue(userStore.getToken, newIssue)
           .then((response) => {
-            if (response.status === 204) {
+            if (response.status === 200) {
               console.log(response.data.value)
 
               this.OpenIssues!.push(response.data.value)
