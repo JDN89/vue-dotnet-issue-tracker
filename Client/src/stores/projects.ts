@@ -601,18 +601,21 @@ export const useProjectStore = defineStore({
 
       const userStore = useUserStore()
       switch (issue.progress) {
+        // ===========   UPDATE OPEN ISSUE  ===============
         case 'Open':
           if (userStore.getToken) {
-            // update the issue also in the pinia store (otherwise you have to retrieve the update data also from the backend with an extra fetch request)
-            const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
-            this.OpenIssues![foundIndex].description = issue.description
-            this.OpenIssues![foundIndex].title = issue.title
-            this.OpenIssues![foundIndex].urgency = issue.urgency
-            this.OpenIssues![foundIndex].type = issue.type
-
             await eventService.updateSingleOpenIssue(userStore.getToken, issueDto)
               .then((response) => {
-                if (response.status === 200) console.log('Open Issue updated')
+                if (response.status === 200) {
+
+                  // update the issue also in the pinia store (otherwise you have to retrieve the update data also from the backend with an extra fetch request)
+                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  this.OpenIssues![foundIndex].description = issue.description
+                  this.OpenIssues![foundIndex].title = issue.title
+                  this.OpenIssues![foundIndex].urgency = issue.urgency
+                  this.OpenIssues![foundIndex].type = issue.type
+                }
+
               }).catch((error) => {
                 if (axios.isAxiosError(error)) {
                   if (error.response) {
@@ -632,14 +635,93 @@ export const useProjectStore = defineStore({
 
           break
         case 'InProgress':
-          console.log('send id to /IssuesInProgress/{issueId}')
 
+          if (userStore.getToken) {
+            await eventService.updateSingleIssueInProgress(userStore.getToken, issueDto)
+              .then((response) => {
+                if (response.status === 200) {
+
+                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  this.InProgress![foundIndex].description = issue.description
+                  this.InProgress![foundIndex].title = issue.title
+                  this.InProgress![foundIndex].urgency = issue.urgency
+                  this.InProgress![foundIndex].type = issue.type
+                }
+
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           break
         case 'InReview':
-          console.log('send id to /issuesInReview/{issueId}')
+          if (userStore.getToken) {
+            await eventService.updateSingleIssueInReview(userStore.getToken, issueDto)
+              .then((response) => {
+                if (response.status === 200) {
+
+                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  this.Review![foundIndex].description = issue.description
+                  this.Review![foundIndex].title = issue.title
+                  this.Review![foundIndex].urgency = issue.urgency
+                  this.Review![foundIndex].type = issue.type
+                }
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           break
         case 'Closed':
-          console.log('send to /closed')
+          if (userStore.getToken) {
+            await eventService.updateSingleClosedIssue(userStore.getToken, issueDto)
+              .then((response) => {
+                if (response.status === 200) {
+
+                  const foundIndex = this.OpenIssues!.findIndex(x => x.id === issue.id)
+                  this.Closed![foundIndex].description = issue.description
+                  this.Closed![foundIndex].title = issue.title
+                  this.Closed![foundIndex].urgency = issue.urgency
+                  this.Closed![foundIndex].type = issue.type
+                }
+              }).catch((error) => {
+                if (axios.isAxiosError(error)) {
+                  if (error.response) {
+                    console.log(error.response?.data)
+                    console.log(error.response.status)
+                    console.log(error.response.headers)
+                  }
+                  else if (error.request) {
+                    console.log(error.request)
+                  }
+                  else {
+                    console.log('Error', error.message)
+                  }
+                }
+              })
+          }
           break
       }
     },
