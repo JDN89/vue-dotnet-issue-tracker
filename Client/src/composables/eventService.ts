@@ -1,12 +1,41 @@
 import axios from 'axios'
 import type { AddProject, Issue, LoginUserInterface, NewIssue, RegisterUserInterface, UpdateIssue, UpdateProject } from '../types/interfaces'
-
+import { logout } from './router'
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
   withCredentials: false,
 })
 
+
+// Add a response interceptor
+apiClient.interceptors.response.use(async function(response) {
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  // Do something with response data
+  return response;
+}, async function(error) {
+  console.log(error)
+  const { data, status, config, headers } = error.response;
+  switch (status) {
+    case 400:
+      console.log('display an not found error')
+      break;
+
+    case 401:
+      console.log('case 401')
+      logout()
+      break;
+
+
+  }
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // Do something with response error
+  return Promise.reject(error.status);
+});
+
+
 export default {
+
+
 
   // ===========  User Requests  ===============
 
