@@ -6,13 +6,13 @@ using Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-    
-    
+
+
 namespace Infrastructure.Security;
 
-public class TokenService:IJwtGenerator
+public class TokenService : IJwtGenerator
 {
-    
+
     private readonly IConfiguration _config;
     public TokenService(IConfiguration config)
     {
@@ -34,7 +34,7 @@ public class TokenService:IJwtGenerator
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddMinutes(400),
+            Expires = DateTime.UtcNow.AddMinutes(1),
             SigningCredentials = creds
         };
 
@@ -45,11 +45,11 @@ public class TokenService:IJwtGenerator
         return tokenHandler.WriteToken(token);
     }
 
-  /*  public RefreshToken GenerateRefreshToken()
-    {
-        var randomNumber = new byte[32];
-        using var rng = RandomNumberGenerator.Create();
-        rng.GetBytes(randomNumber);
-        return new RefreshToken{Token = Convert.ToBase64String(randomNumber)};
-    }*/
-} 
+    /*  public RefreshToken GenerateRefreshToken()
+      {
+          var randomNumber = new byte[32];
+          using var rng = RandomNumberGenerator.Create();
+          rng.GetBytes(randomNumber);
+          return new RefreshToken{Token = Convert.ToBase64String(randomNumber)};
+      }*/
+}
