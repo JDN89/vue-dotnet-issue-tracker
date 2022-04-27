@@ -1,8 +1,5 @@
-
 import { createRouter, createWebHistory } from 'vue-router'
-
 import routes from 'virtual:generated-pages'
-
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +12,6 @@ export const router = createRouter({
 // Answer : Because it's difficult to serialize the function then pass it to frontend,
 // I suggest you modify the routes directly from ~pages import in main.ts.
 router.beforeEach(async (to, from, next) => {
-  console.log('router is still working')
   if (to.meta?.requiresAuth && window.localStorage.getItem('token') && window.localStorage.getItem('username'))
 
     next()

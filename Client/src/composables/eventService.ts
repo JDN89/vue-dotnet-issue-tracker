@@ -21,7 +21,6 @@ apiClient.interceptors.response.use(async function(response) {
       break;
 
     case 401:
-      console.log('case 401')
       logout()
       break;
 
