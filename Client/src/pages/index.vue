@@ -1,51 +1,45 @@
 <script setup lang="ts">
-const name = ref('')
 
-const router = useRouter()
-const go = () => {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
 </script>
 
 <template>
-  <div>
-    <HeaderGuest />
+  <header-guest class="mb-8" />
+  <div class="flex mx-auto">
+    <div class="m-auto content-center justify-center max-w-xl">
 
-    <p>
-      <a rel="noreferrer" href="https://github.com/antfu/vitesse-lite" target="_blank">
-        Vitesse Lite
-      </a>
-    </p>
-    <p>
-      <em text-sm op75>Opinionated Vite Starter Template</em>
-    </p>
+      <h1 class="text-4xl p-3 text-left ">
+        About
+      </h1>
+      <p class="p-3 text-left">
 
-    <div py-4 />
+        This is a Project I made to practice Clean Architecture (Robert C. Martin )
+        <br> thin Controllers using MediatR with ASP.NET MVC
+        <br>
+        <br>
+        Inspired by the drag and drop functionality of Notion which I tried to incorporate in this project.
 
-    <input
-      id="input"
-      v-model="name"
-      placeholder="What's your name?"
-      type="text"
-      autocomplete="false"
-      p="x-4 y-2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
+      </p>
 
-    <div>
-      <button
-        class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
-      >
-        Go
-      </button>
+      <h1 class="prose text-4xl m-4 text-left pt-2">Usage</h1>
+      <p class="text-left">
+        Create a fake account or use the test account (jan@test.com - Pa$$w0rd) login and create a project to track to
+        track bugs and feature requests during the
+        projects
+        development.
+      </p>
+
     </div>
   </div>
+
 </template>
+
+
+<style scoped>
+li {
+  text-align: left;
+}
+
+li::before {
+  background-color: dark;
+}
+</style>
