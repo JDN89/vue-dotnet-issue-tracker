@@ -3,11 +3,12 @@
 import { useField, useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { useProjectStore } from '~/stores/projects'
+import { useAlertStore } from '~/stores/alertStore'
 import type { NewIssue } from '~/types/interfaces'
 
 const store = useProjectStore()
 
-
+const alertStore = useAlertStore();
 
 const newIssue: NewIssue = reactive({
     projectId: store.getLoadedProjectId!,
@@ -64,10 +65,23 @@ const { value: title, errorMessage: titleError } = useField<string>('title')
 const { value: description, errorMessage: descriptionError } = useField<string>('description')
 
 const addNewIssue = async () => {
-    newIssue.title = title.value
-    newIssue.description = description.value
-    store.ShowNewIssue = false
-    return await store.addIssue(newIssue)
+    console.log('fire new issue')
+    if (title.value == undefined || title.value.length < 4) {
+        alertStore.showAlert = true
+        return alertStore.alertMessage = 'Please give your Issue a title of at least 4 characters!'
+    }
+
+    else if (description.value == undefined || description.value.length < 8) {
+        alertStore.showAlert = true
+        return alertStore.alertMessage = 'Please give your Issue a description of at least 8 characters!'
+    }
+    else {
+
+        newIssue.title = title.value
+        newIssue.description = description.value
+        store.ShowNewIssue = false
+        return await store.addIssue(newIssue)
+    }
 }
 </script>
 
@@ -119,6 +133,7 @@ const addNewIssue = async () => {
                     }}</span>
                 </div>
             </div>
+            <Alert v-if="alertStore.getShowAlert" />
         </div>
     </div>
 </template>
