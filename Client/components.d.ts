@@ -4,6 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Alert: typeof import('./src/components/alert/Alert.vue')['default']
     Badge: typeof import('./src/components/kabanboard/issue/Badge.vue')['default']
     ClosedIssues: typeof import('./src/components/kabanboard/ClosedIssues.vue')['default']
     EditButton: typeof import('./src/components/button/EditButton.vue')['default']
