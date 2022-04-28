@@ -3,7 +3,6 @@ using Application.Core;
 using Application.Interfaces;
 using Application.Security;
 using Infrastructure.Persistence;
-using Infrastructure.Security;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,7 +30,7 @@ public static class ApplicationServiceExtensions
             {
                 // Use connection string provided at runtime by Heroku.
                 var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-
+                if (connUrl is null) throw new Exception("connUrl in ApplicationServiceExtensions is null!");
                 // Parse connection URL to connection string for Npgsql
                 connUrl = connUrl.Replace("postgres://", string.Empty);
                 var pgUserPass = connUrl.Split("@")[0];
@@ -52,10 +51,10 @@ public static class ApplicationServiceExtensions
             options.UseNpgsql(connStr);
         });
 
-        services.AddHttpContextAccessor(); 
+        services.AddHttpContextAccessor();
         services.AddMediatR(typeof(MediatREntrypoint).Assembly);
         services.AddAutoMapper(typeof(MappingProfiles).Assembly);
-         services.AddScoped<IUserAccessor, UserAccessor>();
+        services.AddScoped<IUserAccessor, UserAccessor>();
 
         // services.AddSignalR();
 
