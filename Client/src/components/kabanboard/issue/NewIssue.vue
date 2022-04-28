@@ -50,8 +50,8 @@ const updateType = (type: string) => {
 // ====== INPUT & TEXTEREA + validation
 // Define a validation schema
 const schema = yup.object({
-    title: yup.string().required().min(4),
-    description: yup.string().required().min(8),
+    title: yup.string().required().min(4).max(80),
+    description: yup.string().required().min(8).max(1000),
 })
 
 // Create a form context with the validation schema
@@ -70,7 +70,15 @@ const addNewIssue = async () => {
         alertStore.showAlert = true
         return alertStore.alertMessage = 'Please give your Issue a title of at least 4 characters!'
     }
+    else if (title.value.length > 80) {
+        alertStore.showAlert = true
+        return alertStore.alertMessage = 'The title of your issue is longer then 80 characters, please reduce the length.'
 
+    }
+    else if (description.value.length > 1000) {
+        alertStore.showAlert = true
+        return alertStore.alertMessage = 'The description of your issue is to long, please reduce the length'
+    }
     else if (description.value == undefined || description.value.length < 8) {
         alertStore.showAlert = true
         return alertStore.alertMessage = 'Please give your Issue a description of at least 8 characters!'
