@@ -1,11 +1,13 @@
 <script setup lang="ts">
 
+import { useField, useForm } from 'vee-validate'
+import * as yup from 'yup'
 import { useProjectStore } from '~/stores/projects'
 import type { NewIssue } from '~/types/interfaces'
 
 const store = useProjectStore()
 
-const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
+
 
 const newIssue: NewIssue = reactive({
   projectId: store.getLoadedProjectId!,
@@ -15,38 +17,57 @@ const newIssue: NewIssue = reactive({
   description: '',
 
 })
-
+// ============ URGENCY =======================
+// --style--
+const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
 const urgencyStyle = computed(() => {
   return myUrgencyStyles.get(newIssue!.urgency)!
 })
+// -- options--
 const urgencyOptions = ['LOW', 'MEDIUM', 'HIGH']
 const urgencyOptionsHidden = ref(true)
 const showUrgencyOptions = () => {
   urgencyOptionsHidden.value = false
 }
+//--update logic--
 const updateUrgency = (urgency: string) => {
   newIssue.urgency = urgency
   urgencyOptionsHidden.value = true
 }
-
+// ==================== ISSUE TYPE ===================
 const IssueTypes = ['Design', 'Backend', 'Feature Request', 'QA']
 const issueTypesHidden = ref(true)
 const showFeatureTypes = () => {
   issueTypesHidden.value = false
 }
+
 const updateType = (type: string) => {
   newIssue.type = type
   issueTypesHidden.value = true
 }
-const addNewIssue = async () => {
-  if (newIssue.title.length === 0 || newIssue.description.length === 0) {
-    return alert('title and or description or missing!')
-  }
 
-  else {
-    store.ShowNewIssue = false
-    return await store.addIssue(newIssue)
-  }
+// ====== INPUT & TEXTEREA + validation
+// Define a validation schema
+const schema = yup.object({
+  title: yup.string().required().min(4),
+  description: yup.string().required().min(8),
+})
+
+// Create a form context with the validation schema
+useForm({
+  validationSchema: schema,
+})
+
+// No need to define rules for fields
+const { value: title, errorMessage: titleError } = useField<string>('title')
+
+const { value: description, errorMessage: descriptionError } = useField<string>('description')
+
+const addNewIssue = async () => {
+  newIssue.title = title.value
+  newIssue.description = description.value
+  store.ShowNewIssue = false
+  return await store.addIssue(newIssue)
 }
 </script>
 
@@ -85,13 +106,16 @@ const addNewIssue = async () => {
           <i i-carbon-close class="cursor-pointer" @click="store.ShowNewIssue = false" />
         </div>
         <div class="flex justify-start w-auto">
-          <input v-model="newIssue.title" type="text" placeholder="Add a Title"
+          <input v-model="title" name="title" type="text" placeholder="Add a Title"
             class="bg-transparent focus:outline-none">
+          <span>{{ titleError }}</span>
         </div>
 
         <div class=" flex w-auto ">
-          <textarea v-model="newIssue.description" placeholder="Add a description (drag corner to expand texterea)"
+          <textarea name="description" v-model="description"
+            placeholder="Add a description (drag corner to expand texterea)"
             class="text-base focus:outline-none resize-y flex-grow bg-transparent" />
+          <span>{{ descriptionError }}</span>
         </div>
       </div>
     </div>
