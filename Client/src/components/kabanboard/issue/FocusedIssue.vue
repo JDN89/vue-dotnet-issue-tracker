@@ -1,9 +1,11 @@
 <script setup lang="ts">
 
+import { useAlertStore } from '~/stores/alertStore'
 import { useProjectStore } from '~/stores/projects'
 
 const store = useProjectStore()
 
+const alertStore = useAlertStore();
 // ============ URGENCY =======================
 // --style--
 const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
@@ -54,11 +56,33 @@ const editting = async (item: string) => {
 
 const uploadEdditedIssue = () => {
 
-    editFieldsHidden.value = true
-    store.ShowFocusedIssue = false
     if (store.getFocussedIssue)
-        store.updateIssue(store.getFocussedIssue)
-    else return console.error('no issue in focus')
+        if (store.getFocussedIssue.title.length < 4) {
+
+            alertStore.showAlert = true
+            return alertStore.alertMessage = 'Please give your Issue a title of at least 4 characters!'
+        }
+        else if (store.getFocussedIssue.title.length > 80) {
+
+            alertStore.showAlert = true
+            return alertStore.alertMessage = 'The title of your issue is longer then 80 characters, please reduce the length.'
+        }
+        else if (store.getFocussedIssue.description.length > 1000) {
+
+            alertStore.showAlert = true
+            return alertStore.alertMessage = 'The description of your issue is to long, please reduce the length'
+        }
+        else if (store.getFocussedIssue.description.length < 8) {
+
+            alertStore.showAlert = true
+            return alertStore.alertMessage = 'Please give your Issue a description of at least 8 characters!'
+        }
+        else {
+
+            editFieldsHidden.value = true
+            store.ShowFocusedIssue = false
+            return store.updateIssue(store.getFocussedIssue)
+        }
 }
 </script>
 
@@ -73,7 +97,8 @@ const uploadEdditedIssue = () => {
                         <p v-if="editFieldsHidden" class="overflow-hidden font-semibold font-sans w-86 text-sm">
                             {{ store.getFocussedIssue!.title }}
                         </p>
-                        <input v-else v-model="store.getFocussedIssue!.title" type="text" class="bg-transparent">
+                        <input v-else v-model="store.getFocussedIssue!.title" type="text" class="bg-transparent"
+                            placeholder="Update title minimum 4 characters">
                     </div>
 
                     <i i-carbon-close class="cursor-pointer" @click="store.ShowFocusedIssue = false" />
@@ -84,7 +109,8 @@ const uploadEdditedIssue = () => {
                         {{ store.getFocussedIssue!.description }}
                     </p>
                     <textarea v-else v-model="store.getFocussedIssue!.description"
-                        class="min-h-lg h-auto min-w-full overflow-auto bg-transparent" />
+                        class="min-h-lg h-auto min-w-full overflow-auto bg-transparent"
+                        placeholder="Update description of issue min 8 characters" />
                 </div>
                 <div class="flex m-1 justify-around space items-center">
                     <span class="ml-2 text-sm text-gray-600 dark:text-gray-300">{{ store.getFocussedIssue!.date
@@ -124,5 +150,7 @@ const uploadEdditedIssue = () => {
                 </div>
             </div>
         </div>
+
+        <Alert v-if="alertStore.getShowAlert" />
     </div>
 </template>
