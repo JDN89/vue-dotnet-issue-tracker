@@ -4,22 +4,28 @@ import { useProjectStore } from '~/stores/projects'
 
 const store = useProjectStore()
 
+// ============ URGENCY =======================
+// --style--
 const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
 
 const urgencyStyle = computed(() => {
     return myUrgencyStyles.get(store.getFocussedIssue!.urgency)!
 })
+
+// -- options--
 const urgencyOptions = ['LOW', 'MEDIUM', 'HIGH']
 const urgencyOptionsHidden = ref(true)
 const showUrgencyOptions = () => {
     urgencyOptionsHidden.value = false
 }
+
+//--update logic--
 const updateUrgency = (urgency: string) => {
     store.getFocussedIssue!.urgency = urgency
     urgencyOptionsHidden.value = true
-
 }
 
+// ==================== ISSUE TYPE ===================
 const IssueTypes = ['Design', 'Backend', 'Feature Request', 'QA']
 const issueTypesHidden = ref(true)
 const showFeatureTypes = () => {
@@ -29,6 +35,8 @@ const updateType = (type: string) => {
     store.FocusedIssue!.type = type
     issueTypesHidden.value = true
 }
+
+// ==================== EDIT ISSUE  ===================
 const editButtonHidden = ref<boolean>(false)
 const editFieldsHidden = ref<boolean>(true)
 const editting = async (item: string) => {
@@ -43,7 +51,9 @@ const editting = async (item: string) => {
             break
     }
 }
+
 const uploadEdditedIssue = () => {
+
     editFieldsHidden.value = true
     store.ShowFocusedIssue = false
     if (store.getFocussedIssue)

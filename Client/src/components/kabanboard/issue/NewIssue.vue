@@ -65,7 +65,6 @@ const { value: title, errorMessage: titleError } = useField<string>('title')
 const { value: description, errorMessage: descriptionError } = useField<string>('description')
 
 const addNewIssue = async () => {
-    console.log('fire new issue')
     if (title.value == undefined || title.value.length < 4) {
         alertStore.showAlert = true
         return alertStore.alertMessage = 'Please give your Issue a title of at least 4 characters!'
