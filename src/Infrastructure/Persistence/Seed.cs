@@ -37,7 +37,7 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Add right margin to Checkout button",
-                                    Urgency = "High",
+                                    Urgency = "HIGH",
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -46,9 +46,8 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Add discount code to the checkout page",
-                                    Urgency = "High",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "HIGH",
+
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -60,7 +59,7 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Create A Cart Button",
-                                    Urgency = "Medium",
+                                    Urgency = "MEDIUM",
                                     Type = "Feature Request",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -69,9 +68,8 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Provide Documentation on Functionality",
-                                    Urgency = "Low",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "LOW",
+
                                     Type = "Feature Request",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -79,7 +77,7 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Desing Footer",
-                                    Urgency = "Low",
+                                    Urgency = "LOW",
                                     
                                   //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                                     Type = "Desing",
@@ -89,21 +87,20 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Provide Documentation on State",
-                                    Urgency = "Medium",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "MEDIUM",
+
                                     Type = "Feature Request",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
                                 }
-                            }, 
+                            },
                             IssuesInReview = new List<IssueInReview>
                             {
                                 new IssueInReview
                                 {
                                     Id= new Guid(),
                                     Title = "Design dropdown menu for shopping cart",
-                                    Urgency = "Medium",
+                                    Urgency = "MEDIUM",
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -112,9 +109,8 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Display Items in 4 Grid columns",
-                                    Urgency = "High",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "HIGH",
+
                                     Type = "Design",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -122,9 +118,8 @@ public class Seed
                                 {
                                     Id = new Guid(),
                                     Title = "Create login Controller",
-                                    Urgency = "High",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "HIGH",
+
                                     Type = "Backend",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -135,7 +130,7 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Fix DB connection String",
-                                    Urgency = "High",
+                                    Urgency = "HIGH",
                                     Type = "Backend",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -144,9 +139,8 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Review login user interface flow",
-                                    Urgency = "High",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "HIGH",
+
                                     Type = "QA",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -154,9 +148,8 @@ public class Seed
                                 {
                                     Id= new Guid(),
                                     Title = "Add Total Sum to checkout Page",
-                                    Urgency = "High",
-                                    
-                                  //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                                    Urgency = "HIGH",
+
                                     Type = "Feature Request",
                                     Description =
                                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -197,7 +190,7 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Add right margin to Checkout button",
-                        Urgency = "High",
+                        Urgency = "LOW",
                         Type = "Design",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -206,9 +199,8 @@ public class Seed
                     {
                        Id = new Guid(),
                         Title = "Add discount code to the checkout page",
-                        Urgency = "High",
+                        Urgency = "HIGH",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "Design",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -220,7 +212,7 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Create A Cart Button",
-                        Urgency = "Medium",
+                        Urgency = "MEDIUM",
                         Type = "Feature Request",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -229,9 +221,8 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Provide Documentation on Functionality",
-                        Urgency = "Low",
+                        Urgency = "LOW",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "Feature Request",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -240,9 +231,8 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Design Footer",
-                        Urgency = "Low",
+                        Urgency = "LOW",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "Design",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -251,9 +241,8 @@ public class Seed
                     {
                         Id= new Guid(),
                         Title = "Provide Documentation on State",
-                        Urgency = "Medium",
+                        Urgency = "MEDIUM",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "Feature Request",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -265,7 +254,7 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Design dropdown menu for shopping cart",
-                        Urgency = "Medium",
+                        Urgency = "MEDIUM",
                         Type = "Design",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -274,9 +263,8 @@ public class Seed
                     {
                         Id= new Guid(),
                         Title = "Display Items in 4 Grid columns",
-                        Urgency = "High",
+                        Urgency = "HIGH",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "Design",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -285,9 +273,8 @@ public class Seed
                     {
                         Id= new Guid(),
                         Title = "Create login Controller",
-                        Urgency = "High",
+                        Urgency = "HIGH",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "Backend",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -299,7 +286,7 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Fix DB connection String",
-                        Urgency = "High",
+                        Urgency = "HIGH",
                         Type = "Backend",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -308,9 +295,8 @@ public class Seed
                     {
                         Id = new Guid(),
                         Title = "Review login user interface flow",
-                        Urgency = "High",
+                        Urgency = "HIGH",
 
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
                         Type = "QA",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -319,9 +305,7 @@ public class Seed
                     {
                         Id= new Guid(),
                         Title = "Add Total Sum to checkout Page",
-                        Urgency = "High",
-
-                        //  Date = new DateTime(2022, 03, 15, 01, 01,01 ),
+                        Urgency = "HIGH",
                         Type = "Feature Request",
                         Description =
                             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec nibh at urna fringilla posuere. Maecenas aliquam mollis faucibus. Nulla tempor diam massa, eget convallis arcu fringilla tempor. Nullam interdum, magna et cursus sodales, ex tellus sodales justo, ac rhoncus lacus libero vel ligula. Sed molestie a magna gravida blandit."
@@ -329,7 +313,7 @@ public class Seed
                 },
             };
             await context.AddAsync(project);
-             await context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
     }
 }

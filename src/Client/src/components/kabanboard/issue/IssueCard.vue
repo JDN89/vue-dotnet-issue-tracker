@@ -20,11 +20,12 @@ const storeFocusedIssueInfo = async () => {
 
     store.ShowFocusedIssue = true
 }
-const myUrgencyStyles = new Map<string, string>([['Medium', 'border-1'], ['Low', 'border-dotted dark:border-dotted'], ['High', 'border-2 dark:border-2 ']])
+const myUrgencyStyles = new Map<string, string>([['MEDIUM', 'border-1 border-red'], ['LOW', 'border-dotted dark:border-dotted'], ['HIGH', 'border-2 dark:border-2 ']])
 
 const urgencyStyle = computed(() => {
     return myUrgencyStyles.get(props.urgency)!
 })
+console.log(props.urgency)
 </script>
 
 <template>
