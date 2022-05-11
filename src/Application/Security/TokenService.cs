@@ -6,9 +6,7 @@ using Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
-
-
-namespace Infrastructure.Security;
+namespace Application.Security;
 
 public class TokenService : IJwtGenerator
 {

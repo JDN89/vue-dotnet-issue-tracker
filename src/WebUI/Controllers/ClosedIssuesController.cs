@@ -14,7 +14,7 @@ public class ClosedIssuesController : BaseController
     [Authorize]
     public async Task<ActionResult<List<GetClosedIssueDto>>> GetAllIssues(Guid projectId)
     {
-        return await Mediator.Send(new GetAllClosedIssues.Query { ProjId = projectId });
+        return await Mediator.Send(new GetAllClosedIssuesQuery { ProjId = projectId });
     }
     [HttpPut("{projectId}")]
     [Authorize]
