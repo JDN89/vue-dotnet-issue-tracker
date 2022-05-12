@@ -10,24 +10,6 @@
 - You can already use the project and improve upon what I have created so far
    - the Fronted is created and can communicate with the back-end
    - state and position of the issues gets saved when you drag  an issue to another column and when you leave the project page
-##  To Do
-- fix display of date time - DONE
-    > 
-- add new issue - DONE
-    - automatically fill in current date upon creation of issue - DONE
-- edit existing issue - DONE
-- delete issue - DONE
-- add new project - DONE
-- delete a project and related issues (cascade delete?) - DONE
-- load issues related to a specific project - DONE
-    - upon logging in Project [0] gets loaded - DONE
-- remove token automatically when it expires
-- display errors in a nice format
-    - display Axios errors (if necessary)
- - EF core inserts issues in random order, making drag and drop feature of kabanboard less usefull. 
-   - find solution to save issues via EF core in the order they're send in to the back-end.
-- Add Unit Tests
-
 ## Ideas
  - Add possibility to share your project / issue with another user.
     - share button > fill in user email > if email exists in DB > user gets invitation > upon accepting > project / issues gets pushed to his DB
@@ -37,7 +19,6 @@
  - Add possibility to add Screenshots to your issue Description
  - Make a mobile version or make mobile friendly
  - ...
-
 
 ## Install project
 - Make sure you have PostGress installed on your pc, create a DB for your project and Change the ConntectionString in /WebUI/appsettings.Development.json

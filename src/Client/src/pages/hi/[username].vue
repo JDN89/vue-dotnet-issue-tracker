@@ -25,7 +25,7 @@ onBeforeMount(async () => {
 <template>
     <HeaderUser />
     <h1 text-2xl pb-3>
-        Hi, {{ props.username.toUpperCase() }}
+        Hello {{ props.username.toUpperCase() }}
     </h1>
 
     <div id="container" class="flex flex-row justify-center py-10">
