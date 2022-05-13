@@ -1,10 +1,8 @@
 # issue-tracker
+- Demo app on heroku hobby dev (so takes a while to load): https://dotnet-vue-issue-tracker.herokuapp.com/hi/jan
+
 - Project I made to practice Clean Architecture (Robert C. Martin ) and thin Controllers using MediatR with ASP.NET MVC
 - Fronted is made with the Vue composition API and script setup
-
-<br/>
-
-> I'm a self taught developer and I only started coding late 2019 (in my free time), so my implementation of Clean Architecture might be faulty 
 
 ## Work in progress
 - You can already use the project and improve upon what I have created so far
@@ -18,7 +16,9 @@
  - Link issues to github commits
  - Add possibility to add Screenshots to your issue Description
  - Make a mobile version or make mobile friendly
- - ...
+ - EF inserts data in random order. Write an algorithm to keep track of the current position of the issue in the table
+    - for example: if the isssue is an openIssue, store the index off the issue in the openIssue array in the backend
+    - upon fetching the openIssues => insert issue in the arr at [index]
 
 ## Install project
 - Make sure you have PostGress installed on your pc, create a DB for your project and Change the ConntectionString in /WebUI/appsettings.Development.json
@@ -26,7 +26,7 @@
     "DefaultConnection": "Server=localhost; Port=5432;User ID=jan; Password=xxxx; Database=issue_tracker_db; Pooling=true;"
   }
   <br/>
- > There is a known issue, at the time of writing, where EF Core doesn't create the DB automatically for you when your DB is Postgress. 
+ > There is an issue(at the time of writing), where EF Core doesn't create the DB automatically for you when your DB is Postgress. 
  <br/>
   > For Postgress, you have to create the DB for your project manually (just DB name, not the tables etc.)
   > And after creating the DB you can run the dotnet run command
