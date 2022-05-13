@@ -1,5 +1,5 @@
 # issue-tracker
-- Demo app on heroku hobby dev (so takes a while to load): https://dotnet-vue-issue-tracker.herokuapp.com/hi/jan
+- Demo app on heroku hobby dev (so takes a while to load): https://dotnet-vue-issue-tracker.herokuapp.com
 
 - Project I made to practice Clean Architecture (Robert C. Martin ) and thin Controllers using MediatR with ASP.NET MVC
 - Fronted is made with the Vue composition API and script setup
