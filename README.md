@@ -1,14 +1,10 @@
 # issue-tracker
-- Demo app on heroku hobby dev (so takes a while to load): https://dotnet-vue-issue-tracker.herokuapp.com
-
 - Project I made to practice Clean Architecture (Robert C. Martin ) and thin Controllers using MediatR with ASP.NET MVC
 - Fronted is made with the Vue composition API and script setup
 
-## Work in progress
-- You can already use the project and improve upon what I have created so far
-   - the Fronted is created and can communicate with the back-end
-   - state and position of the issues gets saved when you drag  an issue to another column and when you leave the project page
-## Ideas
+- Demo app on heroku hobby dev (so takes a while to load):https://dotnet-vue-issue-tracker.herokuapp.com
+
+## Ideas for expenasion
  - Add possibility to share your project / issue with another user.
     - share button > fill in user email > if email exists in DB > user gets invitation > upon accepting > project / issues gets pushed to his DB
     - When you share an issue, the other user  can write comments in the description (link a different font color to the other user)
@@ -60,7 +56,7 @@ Dummy user:
 
 ![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/issue-tracker-light.png)
 ![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/issue-tracker-dark.png)
-
+![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/ER-diagram-db.png)
 
 # After word
 - This project is a continuation of my former issue-tracker repo https://github.com/JDN89/issue-tracker-discontinued .
