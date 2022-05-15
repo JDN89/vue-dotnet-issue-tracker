@@ -56,7 +56,7 @@ Dummy user:
 
 ![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/issue-tracker-light.png)
 ![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/issue-tracker-dark.png)
-![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/ER-diagram-db.png)
+![image](https://github.com/JDN89/vue-dotnet-issue-tracker/blob/main/ReadMeImages/ER-diagram-db-v2.png)
 
 # After word
 - This project is a continuation of my former issue-tracker repo https://github.com/JDN89/issue-tracker-discontinued .
